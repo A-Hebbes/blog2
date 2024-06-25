@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-xmgx@t=eze*b(gylbqz1m^vj(ybm3^6m@0djy*1af#r7m+5gcl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '8000-ahebbes-blog2-ccdrq22ootb.ws-eu114.gitpod.io',
@@ -95,8 +95,7 @@ DATABASES = {
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.gitpod.io",
-    "https://your-custom-domain.gitpod.io"
-    "https://8000-your-workspace-id.ws.codeinstitute-ide.net"
+    "https://8000-ahebbes-blog2-tv0stm4l5w4.ws.codeinstitute-ide.net"
 ]
 
 
