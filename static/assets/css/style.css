@@ -1,0 +1,26 @@
+:root {
+    --color1: #344e41; /* Primary colour */
+    --color2: #3a5a40; /*  Secondary colour */
+    --color3: #588157; /*  Background colour */
+    --color4: #a3b18a; /*  Reserve colour */
+    --color5: #dad7cd; /*  Text colour */
+    
+}
+
+.custom-navbar {
+    background-color: var(--color2); 
+}
+
+.navbar-brand .brand-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color5);
+}
+
+.navbar .nav-link {
+    color: var(--color5);  
+}
+
+.navbar .nav-link:hover {
+    color: var(--color4);
+}  
