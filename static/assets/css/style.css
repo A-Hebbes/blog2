@@ -51,11 +51,13 @@ body {
     text-transform: uppercase;
 }
 
-.masthead {
-    margin-top: 0.75em;
-    overflow: hidden;
-    position: relative;
-    display: inline-block;
-    height: 33vh;
-    width: 100%;
+.post-link {
+    text-decoration: none;
+    color: var(--color4);
+}
+
+.post-link:hover,
+.page-link {
+    text-decoration: underline;
+    color: var(--color5);
 }
