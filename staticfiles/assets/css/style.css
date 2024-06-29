@@ -1,0 +1,65 @@
+/* Guidance for styles.css taken from Code Institute Blog Project Guide */
+
+:root {
+    --color1: #344e41; /* Primary colour */
+    --color2: #3a5a40; /*  Secondary colour */
+    --color3: #588157; /*  Background colour */
+    --color4: #a3b18a; /*  Reserve colour */
+    --color5: #dad7cd; /*  Text colour */
+    
+}
+
+body {
+    background-color: var(--color3);
+}
+
+.custom-navbar {
+    background-color: var(--color2); 
+}
+
+.navbar-brand .brand-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color5);
+}
+
+.navbar .nav-link {
+    color: var(--color5);  
+}
+
+.navbar .nav-link:hover {
+    color: var(--color4);
+}  
+
+.card {
+    border: none;
+}
+
+.image-container {
+    position: relative;
+}
+
+.image-flash {
+    position: absolute;
+    bottom: 5%;
+    min-width: 30%;
+    left: -2px;
+    background-color: var(--color3);
+}
+
+.contributor {
+    color: var(--color5);
+    margin: o.25em;
+    text-transform: uppercase;
+}
+
+.post-link {
+    text-decoration: none;
+    color: var(--color4);
+}
+
+.post-link:hover,
+.page-link {
+    text-decoration: underline;
+    color: var(--color5);
+}
