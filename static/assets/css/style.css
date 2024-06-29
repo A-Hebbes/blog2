@@ -47,10 +47,35 @@ body {
     background-color: var(--color3);
 }
 
+.full-width {
+    width: 100%;
+    height: auto;
+}
+
 .contributor {
     color: var(--color5);
     margin: o.25em;
     text-transform: uppercase;
+}
+
+.header {
+    margin-top: 0.625em;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    height: 33vh;
+    width: 100%;
+}
+
+.header-text {
+    background-color: var(--color1);
+    color: var(--color5);
+    position: relative;
+}
+
+.header-image {
+    position: relative;
+    overflow: hidden;
 }
 
 .post-button{
@@ -61,5 +86,15 @@ body {
 .post-button:hover,
 .page-button {
     text-decoration: underline;
+    color: var(--color5);
+}
+
+.post-title {
+    margin-top: 10%;
+    margin-left: 5%;
+}
+
+.post-info {
+    margin-left: 5%;
     color: var(--color5);
 }
