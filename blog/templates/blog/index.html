@@ -1,7 +1,7 @@
+<!-- Guidance for index.html taken from Code Institute Blog Project Guide -->
+
 {% extends "base.html" %}
-
 {% block content %}
-
 
 <div class="container-fluid">
     <div class="row">
@@ -41,7 +41,7 @@
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center">
             {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &rarr;</a></li>
             {% endif %}
         </ul>
     </nav>
