@@ -19,6 +19,6 @@ def post_full(request, slug):
 
     return render(
         request,
-        "blog/post_detail.html",
+        "blog/post_full.html",
         {"post": post},
     )
