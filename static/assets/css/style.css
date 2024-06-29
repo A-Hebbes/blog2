@@ -53,13 +53,13 @@ body {
     text-transform: uppercase;
 }
 
-.post-link {
+.post-button{
     text-decoration: none;
     color: var(--color4);
 }
 
-.post-link:hover,
-.page-link {
+.post-button:hover,
+.page-button {
     text-decoration: underline;
     color: var(--color5);
 }
