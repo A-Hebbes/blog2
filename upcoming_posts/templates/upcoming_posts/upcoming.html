@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
 <div class="container">
     <h2>Upcoming Posts</h2>
@@ -8,7 +9,7 @@
         <li>
             <h3>{{ post.title }}</h3>
             <p>Release Date: {{ post.release_date }}</p>
-            <!-- Add more details as needed -->
+            <p>Contributor: {{post.author}}</p>
         </li>
         {% empty %}
         <li>No upcoming posts.</li>
