@@ -22,3 +22,7 @@ def post_full(request, slug):
         "blog/post_full.html",
         {"post": post},
     )
+
+def draft_posts(request):
+    drafts = Post.objects.filter(status=0)  
+    return render(request, 'blog/future_post.html', {'drafts': drafts})

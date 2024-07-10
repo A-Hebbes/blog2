@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block content %}
+
+
+{% load static %}
+
+<div class="container">
+    <h1>Upcoming Articles For You To Look Forward To</h1>
+    <div class="list-group">
+        {% for post in drafts %}
+            <div class="list-group-item">
+                <h5 class="mb-1">{{ post.title }}</h5>
+                <p class="mb-1">{{ post.author }}</p>
+                <small>Created on: {{ post.created_on }}</small>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
+
