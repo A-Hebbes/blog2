@@ -14,15 +14,33 @@
 
       <p>
       {% blocktrans %} 
-       If You Would Like To Leave A Comment Here At Book Blog,
+       If you would like to leave a comment here at Book Blog,
        please log in. If you're not registered yet, <a class="link" href="{{ signup_url }}">register here</a> 
        and then comment to your heart's content.
        {% endblocktrans %} 
       </p>
 
   </div>
-
 </div>
+<div class="row">
+  <div class="col-md-8 mt-3 offset-md-2">
+      <form class="login" method="POST" action="{% url 'account_login' %}">
+          {% csrf_token %}
+          {{ form.as_p }}
+          {% if redirect_field_value %}
+          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+          {% endif %}
+          <button class="btn signup-btn right" type="submit">{% trans "Sign In" %}</button>
+          <div class="form-group">
+            <label for="remember_me">
+                <input type="checkbox" id="remember_me" name="remember_me"> Remember Me
+            </label>
+        </div>
+      </form>
+  </div>
+</div>
+</div>
+{% endblock %}
 
 <!--
 
