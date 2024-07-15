@@ -10,11 +10,11 @@
 }
 
 body {
-    background-color: var(--color3);
+    background-color: var(--color2);
 }
 
 .custom-navbar {
-    background-color: var(--color2); 
+    background-color: var(--color1); 
 }
 
 .navbar-brand .brand-text {
@@ -98,3 +98,5 @@ body {
     margin-left: 5%;
     color: var(--color5);
 }
+
+.text-on-light {color: var(--color1)}
