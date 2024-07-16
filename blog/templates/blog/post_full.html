@@ -29,7 +29,7 @@
 <div class="row">
     <div class="col-12">
         <strong class="text-on-dark">
-            <i class="far fa-comments"></i> {{ comment_count }}
+            <i class="far fa-comments"></i> {{ total_comments }}
         </strong>
     </div>
     <div class="col-12">
@@ -42,21 +42,21 @@
       <h3>Comments:</h3>
       <div class="card-body">
         <!-- Loop for iterating through coments -->
-        {% for comment in comments %}
-        <div class="p-2 comments
-          {% if not comment.approved and comment.author == user %}
-          faded{% elif not comment.approved %} d-none{% endif %}">
+        {% for feedback in user_comments %}
+        <div class="p-2 comment-item
+        {% if not feedback.approved and feedback.author == current_user %}
+        faded{% elif not feedback.approved %} d-none{% endif %}">
           <p class="font-weight-bold">
-            {{ comment.author }}
+            {{ feedback.author }}
             <span class="font-weight-normal">
-                {{ comment.created_on }}
+                {{ feedback.created_on }}
               </span> said:
             </p>
-            <div id="comment{{ comment.id }}">
-                {{ comment.body | linebreaks }}
+            <div id="comment{{ feedback.id }}">
+                {{ feedback.content | linebreaks }}
               </div>
-              {% if not comment.approved and comment.author == user %}
-              <p class="approval">
+              {% if not feedback.approved and feedback.author == current_user %}
+              <p class="approval-message">
                 Your comment is waiting for approval from an admin
               </p>
               {% endif %}
@@ -64,6 +64,7 @@
       {% endfor %}
     </div>
   </div>
+</div>
 
 
 {% endblock %}
