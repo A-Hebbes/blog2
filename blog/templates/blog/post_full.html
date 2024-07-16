@@ -25,7 +25,7 @@
             </div>
         </div>
     </div>
-<!--Comment Counter-->
+<!-- Comment Counter -->
 <div class="row">
     <div class="col-12">
         <strong class="text-on-dark">
@@ -36,36 +36,36 @@
         <hr>
     </div>
 </div>
-<!--Displays The Comments-->
+
+<!-- Displays The Comments -->
 <div class="row">
     <div class="col-md-8 card mb-4 mt-3">
-      <h3>Comments:</h3>
-      <div class="card-body">
-        <!-- Loop for iterating through coments -->
-        {% for feedback in user_comments %}
-        <div class="p-2 comment-item
-        {% if not feedback.approved and feedback.author == current_user %}
-        faded{% elif not feedback.approved %} d-none{% endif %}">
-          <p class="font-weight-bold">
-            {{ feedback.author }}
-            <span class="font-weight-normal">
-                {{ feedback.created_on }}
-              </span> said:
-            </p>
-            <div id="comment{{ feedback.id }}">
-                {{ feedback.content | linebreaks }}
-              </div>
-              {% if not feedback.approved and feedback.author == current_user %}
-              <p class="approval-message">
-                Your comment is waiting for approval from an admin
-              </p>
-              {% endif %}
-      </div>
-      {% endfor %}
+        <h3>Comments:</h3>
+        <div class="card-body">
+            <!-- Loop for iterating through comments -->
+            {% for feedback in user_comments %}
+            <div class="p-2 comment-item
+            {% if not feedback.approved and feedback.author == current_user %}
+            faded{% elif not feedback.approved %} d-none{% endif %}">
+                <p class="font-weight-bold">
+                    {{ feedback.author }}
+                    <span class="font-weight-normal">
+                        {{ feedback.created_on }}
+                    </span> said:
+                </p>
+                <div id="comment{{ feedback.id }}">
+                    {{ feedback.content | linebreaks }}
+                </div>
+                {% if not feedback.approved and feedback.author == current_user %}
+                <p class="approval-message">
+                    Your comment is waiting for approval from an admin
+                </p>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
     </div>
-  </div>
 </div>
-
 
 {% endblock %}
 
