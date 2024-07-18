@@ -20,6 +20,7 @@ def post_full(request, slug):
     user_comments = post.comments.all().order_by("-created_on")
     total_comments = post.comments.filter(approved=True).count()
     user = request.user
+    comment_form = CommentForm()
 
     return render(
         request,
@@ -28,6 +29,7 @@ def post_full(request, slug):
          "user_comments": user_comments,
          "total_comments": total_comments,
          "user": user,
+         "comment_form": comment_form
         },
     )
 
