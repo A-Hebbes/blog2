@@ -40,7 +40,7 @@
 
 <!-- Displays The Comments -->
 <div class="row">
-    <div class="col-md-8 card mb-4 mt-3">
+    <div class=" container col-md-8 card mb-4 mt-3">
         <h3>Comments:</h3>
         <div class="card-body">
             <!-- Loop for iterating through comments -->
@@ -55,7 +55,7 @@
                     </span> said:
                 </p>
                 <div id="comment{{ comment.id }}">
-                    {{ comment.content | linebreaks }}
+                    {{ comment.body | linebreaks }}
                 </div>
                 {% if not comment.approved and comment.author == user %}
                 <p class="approval-message">
