@@ -16,14 +16,17 @@ def post_full(request, slug):
     
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
-    comments = post.comments.all().order_by("-created_on")
-    comment_count = post.comments.filter(approved=True).count()
+    user_comments = post.comments.all().order_by("-created_on")
+    total_comments = post.comments.filter(approved=True).count()
+    user = request.user
+
     return render(
         request,
         "blog/post_full.html",
         {"post": post,
-         "comments": comments,
-         "comment_count": comment_count,
+         "user_comments": user_comments,
+         "total_comments": total_comments,
+         "user": user,
         },
     )
 
