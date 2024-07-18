@@ -69,9 +69,23 @@
     </div>
 </div>
 
-<!-- Comments Section -->
+<!-- Comments Section  for Authenticated Users-->
 <div class="col-md-4 card mb-4 mt-3">
     <div class="card-body">
+        {% if user.is_authenticated %}
+        <h3>Let Us Know What You Think:</h3>
+<p>Username: {{ user.username }}</p>
+<form id="commentForm" method="post" style="margin-top: 1.25em;">
+    {{ comment_form | crispy }}
+    <button id="buttonSubmit" type="submit" class="btn btn-signup post-button">Submit</button>
+</form>
+{% else %}
+<p>If You Would Like To Leave a Comment Please Log In</p>
+{% endif %}
+  </div>
+</div>
+
+
 
 {% endblock %}
 
