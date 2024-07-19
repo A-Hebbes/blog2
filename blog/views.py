@@ -19,6 +19,9 @@ def post_full(request, slug):
     post = get_object_or_404(queryset, slug=slug)
     user_comments = post.comments.all().order_by("-created_on")
     total_comments = post.comments.filter(approved=True).count()
+
+    if request.method == "POST":
+        
     user = request.user
     comment_form = CommentForm()
 
