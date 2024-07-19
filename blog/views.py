@@ -28,6 +28,17 @@ def post_full(request, slug):
             comment.author = request.user
             comment.post = post
             comment.save()
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Your Comment Has Been Submitted.\nYour comment will be published once approved by the admin.'
+            )
+        else: 
+            messages.add_message(
+                request, 
+                messages.ERROR,
+                'There was an error with your comment submission. Please try again.'
+    )
+
 
 
     user = request.user
