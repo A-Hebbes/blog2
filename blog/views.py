@@ -21,9 +21,13 @@ def post_full(request, slug):
     total_comments = post.comments.filter(approved=True).count()
 
     if request.method == "POST":
-        
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.isvalid():
+            comment = comment_form.save(commit+False)
+
     user = request.user
     comment_form = CommentForm()
+
 
     return render(
         request,
