@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from django.contrib import messages
-from .models import Post
+from django.http import HttpResponseRedirect
+from .models import Post, Comment
 from .forms import CommentForm
 
 # Create your views here.
@@ -59,3 +60,8 @@ def post_full(request, slug):
 def draft_posts(request):
     drafts = Post.objects.filter(status=0)  
     return render(request, 'blog/future_post.html', {'drafts': drafts})
+
+def edit_comment(request, slug, comment_id):
+    if request.method == "POST":
+
+        queryset = Post.objects.filter(status=1)
