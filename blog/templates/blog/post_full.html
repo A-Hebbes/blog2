@@ -63,6 +63,11 @@
                     Your comment is waiting for approval from an admin
                 </p>
                 {% endif %}
+                <!--Button To Edit Comment-->
+                {% if user.is_authenticated and comment.author == user %}
+                 <button class="btn edit-btn"
+                comment_id="{{ comment.id }}">Edit Comment</button>
+  {% endif %}
             </div>
             {% endfor %}
         </div>

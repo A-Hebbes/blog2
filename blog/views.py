@@ -78,4 +78,4 @@ def edit_comment(request, slug, comment_id):
         else:
             messages.add_messages(request, messages.ERROR, 'There Was An Error Updating This Comment')
         
-return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+        return HttpResponseRedirect(reverse('post_full', args=[slug]))
