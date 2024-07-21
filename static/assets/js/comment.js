@@ -1,16 +1,17 @@
 //Get Edit Buttons
-
+document.addEventListener('DOMContentLoaded', function() {
 const editBtns = document.getElementsByClassName("edit-btn");
-const commentInput = document.querySelector("id_body");
-const commentFormElement = document.querySelector("commentForm");
-const submitBtn = document.querySelector("submitButton");
+const commentInput = document.querySelector("#id_body");
+const commentFormElement = document.querySelector("#commentForm");
+const submitBtn = document.querySelector("#buttonSubmit");
 
-editBtns.forEach((btn) => {
+for (let btn of editBtns) {
     btn.addEventListener("click", (event) => {
-        const commentId = event.target.getAttribute("comment_id");
-        const commentContent = document.querySelector(`#comment${commentId}`).innerText;
+        let commentId = event.target.getAttribute("comment_id");
+        let commentContent = event.target.closest('.comment').querySelector('.comment-content').innerText;
         commentInput.value = commentContent;
-        submitBtn.textContent = "Update";
-        commentFormElement.setAttribute("action", `edit_comment/${commentId}`);
+        submitBtn.innerText = "Update";
+        commentFormElement.setAttribute("action", `comment_edit/${commentId}`);
     });
+}
 });
