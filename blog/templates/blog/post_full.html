@@ -99,6 +99,32 @@
     var post_slug = "{{ post.slug }}";
 </script>
 
+<!-- Edit Comment Modal -->
+<div class="modal fade" id="editCommentModal" tabindex="-1" aria-labelledby="editCommentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editCommentModalLabel">Edit Comment</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="editCommentForm" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="editCommentBody" class="form-label">Comment</label>
+              <textarea class="form-control" id="editCommentBody" rows="3"></textarea>
+            </div>
+            <input type="hidden" id="editCommentId" name="comment_id" value="">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="updateCommentBtn">Update Comment</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 {%endblock content%} 
 
 <!--
