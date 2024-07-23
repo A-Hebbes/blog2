@@ -65,7 +65,7 @@
                 {% endif %}
 
 
-                <!--Button To Edit Comment
+                <!--Button To Edit Comment -->
                 {% if user.is_authenticated and comment.author == user %}
                  <button class="btn edit-btn"
                 comment_id="{{ comment.id }}">Edit Comment</button>
@@ -76,7 +76,7 @@
     </div>
 </div>
 
-Comments Section  for Authenticated Users
+<!--Comments Section  for Authenticated Users-->
 
 
 <div class="col-md-4 card mb-4 mt-3">
@@ -94,19 +94,25 @@ Comments Section  for Authenticated Users
 {% endif %}
   </div>
 </div>
-{%endblock content%} -->
 
+<script>
+    var post_slug = "{{ post.slug }}";
+</script>
+
+{%endblock content%} 
+
+<!--
 {% for comment in comments %}
-<div class="comment">  <!-- Add this wrapper div with class "comment" -->
-    <p class="comment-content">{{ comment.body }}</p>  <!-- Add class "comment-content" here -->
-    <!--Button To Edit Comment-->
+<div class="comment"> 
+    <p class="comment-content">{{ comment.body }}</p>  
+    
     {% if user.is_authenticated and comment.author == user %}
         <button class="btn edit-btn" comment_id="{{ comment.id }}">Edit Comment</button>
     {% endif %}
-</div>  <!-- Close the comment wrapper div -->
+</div>  
 {% endfor %}
 
-<!-- Comments Section for Authenticated Users -->
+
 <div class="col-md-4 card mb-4 mt-3">
     <div class="card-body">
         {% if user.is_authenticated %}
@@ -122,7 +128,7 @@ Comments Section  for Authenticated Users
         {% endif %}
     </div>
 </div>
-
+-->
 {% block scripts %}
 <script src="{% static 'assets/js/comment.js' %}"></script>
 {% endblock scripts %}
