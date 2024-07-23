@@ -83,6 +83,10 @@ def edit_comment(request, slug, comment_id):
         
         return HttpResponseRedirect(reverse('post_full', args=[slug]))
 
+        def delete_comment(request, slug, comment_id):
+            queryset = Post.objects.filter(status=1)
+            post = get_object_or_404(Comment, pk=comment_id)
+
 """
 
 def edit_comment(request, slug, comment_id):
