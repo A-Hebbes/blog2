@@ -61,8 +61,8 @@ def draft_posts(request):
     drafts = Post.objects.filter(status=0)  
     return render(request, 'blog/future_post.html', {'drafts': drafts})
 
-"""
-This view works prior to modal!!
+
+
 
 def edit_comment(request, slug, comment_id):
     if request.method == "POST":
@@ -93,3 +93,4 @@ def edit_comment(request, slug, comment_id):
             comment.save()
             return JsonResponse({'success': True, 'new_body': comment.body})
     return JsonResponse({'success': False}, status=400)
+"""

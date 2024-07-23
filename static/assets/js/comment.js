@@ -52,6 +52,35 @@ document.addEventListener('DOMContentLoaded', function() {
             commentFormElement.setAttribute("action", newAction);
             
             console.log("Form action is now:", commentFormElement.getAttribute("action"));
+
+            commentFormElement.scrollIntoView({ behavior: "smooth" });
         });
     }
     });
+
+    /*document.addEventListener('DOMContentLoaded', function() {
+        const editBtns = document.getElementsByClassName("edit-btn");
+        const editCommentModal = new bootstrap.Modal(document.getElementById('editCommentModal'));
+        const editCommentForm = document.getElementById('editCommentForm');
+        const editCommentBody = document.getElementById('editCommentBody');
+        const editCommentId = document.getElementById('editCommentId');
+        const updateCommentBtn = document.getElementById('updateCommentBtn');
+    
+        for (let btn of editBtns) {
+            btn.addEventListener("click", (event) => {
+                let commentId = event.target.getAttribute("comment_id");
+                let commentContent = document.getElementById(`comment${commentId}`).innerText;
+                editCommentBody.value = commentContent.trim();
+                editCommentId.value = commentId;
+                editCommentModal.show();
+            });
+        }
+    
+        updateCommentBtn.addEventListener("click", () => {
+            let commentId = editCommentId.value;
+            let newAction = `/${post_slug}/comment_edit/${commentId}/`;
+            editCommentForm.setAttribute("action", newAction);
+            editCommentForm.submit();
+            editCommentModal.hide();
+        });
+    });*/
