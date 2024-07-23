@@ -87,6 +87,14 @@ def edit_comment(request, slug, comment_id):
             queryset = Post.objects.filter(status=1)
             post = get_object_or_404(Comment, pk=comment_id)
 
+            if comment.author == request.user: comment .delete()
+                messages.add_mesage(request, messages.SUCCESS, 'Your Comment Has Been Delted')
+            else: messages.add_message(request, messages.ERROR, 'Comments Can Only Be Deleted By Their Creator')
+            
+
+
+            
+
 """
 
 def edit_comment(request, slug, comment_id):
