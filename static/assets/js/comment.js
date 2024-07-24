@@ -26,6 +26,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const commentInput = document.querySelector("#id_body");
     const commentFormElement = document.querySelector("#commentForm");
     const submitBtn = document.querySelector("#buttonSubmit");
+    const modalDelete = new bootstrap.Modal(document.getElementById("modalDelete"));
+    
+    const buttonsDelete = this.getElementsByClassName("delete-btn");
+    console.log("Delete buttons found:", buttonsDelete.length);
+    const confirmDelete = document.getElementById("confirmDelete");
 
     for (let btn of editBtns) {
         btn.addEventListener("click", (event) => {
@@ -56,7 +61,17 @@ document.addEventListener('DOMContentLoaded', function() {
             commentFormElement.scrollIntoView({ behavior: "smooth" });
         });
     }
+    
+
+    for (let button of buttonsDelete) {
+        button.addEventListener("click", (event) =>
+        {let commentId = event.target.getAttribute("comment_id");
+            console.log("Delete Button Clicked, comment ID:", commentId);
+            confirmDelete.setAttribute = 'href', 'delete_comment/${commentId}';
+            modalDelete.show();
     });
+    }
+});
 
     /*document.addEventListener('DOMContentLoaded', function() {
         const editBtns = document.getElementsByClassName("edit-btn");
