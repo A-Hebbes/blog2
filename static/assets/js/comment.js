@@ -26,11 +26,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const commentInput = document.querySelector("#id_body");
     const commentFormElement = document.querySelector("#commentForm");
     const submitBtn = document.querySelector("#buttonSubmit");
+
+    const buttonsDelete = document.getElementsByClassName("delete-btn");
+    const modalDelete = new bootstrap.Modal(document.getElementById("modalDelete"));
+    const confirmDelete = document.getElementById("confirmDelete");
+
+
+
+    /*
+    FUnctions changed to try and fix del button 
     const modalDelete = new bootstrap.Modal(document.getElementById("modalDelete"));
     
     const buttonsDelete = this.getElementsByClassName("delete-btn");
     console.log("Delete buttons found:", buttonsDelete.length);
     const confirmDelete = document.getElementById("confirmDelete");
+    */
 
     for (let btn of editBtns) {
         btn.addEventListener("click", (event) => {
@@ -62,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-
+/* DELETE COMMENT BEFORE TRY AT FIXING
     for (let button of buttonsDelete) {
         button.addEventListener("click", (event) =>
         {let commentId = event.target.getAttribute("comment_id");
@@ -70,56 +80,72 @@ document.addEventListener('DOMContentLoaded', function() {
             confirmDelete.setAttribute = 'href', 'delete_comment/${commentId}';
             modalDelete.show();
     });
+    }*/
+
+    
+    for (let button of buttonsDelete) {
+        button.addEventListener("click", (event) => {
+            let commentId = event.target.getAttribute("comment_id");
+            console.log("Delete Button Clicked, comment ID:", commentId);
+            
+            confirmDelete.setAttribute('data-comment-id', commentId);
+            
+            modalDelete.show();
+        });
     }
 
-    // Add event listener for the confirm delete button
-confirmDelete.addEventListener("click", function(event) {
-    event.preventDefault();
-    
-    const url = this.getAttribute('href');
-    
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'X-CSRFToken': getCookie('csrftoken'),  // You need to implement getCookie function
-            'Content-Type': 'application/json',
-        },
-    })
-    .then(response => {
-        if (response.ok) {
-            return response.json();
-        }
-        throw new Error('Network response was not ok.');
-    })
-    .then(data => {
-        console.log("Comment deleted successfully");
-        // Remove the comment from the DOM
-        const commentElement = document.getElementById(`comment${data.comment_id}`);
-        if (commentElement) {
-            commentElement.remove();
-        }
-        modalDelete.hide();
-    })
-    .catch(error => {
-        console.error('There was a problem with the fetch operation:', error.message);
-    });
-});
+    confirmDelete.addEventListener("click", function(event) {
+        event.preventDefault();
+        console.log("Confirm delete clicked");
+        
+        const commentId = this.getAttribute('data-comment-id');
+        const url = `/delete_comment/${post_slug}/${commentId}/`;
+        console.log("Delete URL:", url);
 
-// Function to get CSRF token
-function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': getCookie('csrftoken'),
+                'X-Requested-With': 'XMLHttpRequest',
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log("Comment deleted successfully", data);
+                const commentElement = document.querySelector(`.comment-item:has(button[comment_id="${commentId}"])`);
+                if (commentElement) {
+                    commentElement.remove();
+                }
+                modalDelete.hide();
+            } else {
+                console.error('Error deleting comment:', data.error);
+                alert(data.error);
+            }
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
+    });
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
             }
         }
+        return cookieValue;
     }
-    return cookieValue;
-}
+});
+
+
+
 
     /*document.addEventListener('DOMContentLoaded', function() {
         const editBtns = document.getElementsByClassName("edit-btn");
