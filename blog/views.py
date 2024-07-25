@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Post, Comment
 from .forms import CommentForm
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -84,8 +85,27 @@ def edit_comment(request, slug, comment_id):
         return HttpResponseRedirect(reverse('post_full', args=[slug]))
 
 def delete_comment(request, slug, comment_id):
+    comment = get_object_or_404(Comment, pk=comment_id)
+
+    if comment.author == request.user: 
+        comment.delete()
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            return JsonResponse({'success': True, 'comment_id': comment_id})
+        else:
+            messages.add_message(request, messages.SUCCESS, 'Your Comment Has Been Deleted')
+    else: 
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            return JsonResponse({'success': False, 'error': 'Comments Can Only Be Deleted By Their Creator'}, status=403)
+        else:
+            messages.add_message(request, messages.ERROR, 'Comments Can Only Be Deleted By Their Creator')
+
+    return HttpResponseRedirect(reverse('post_full', args=[slug]))        
+
+"""
+FUNCTION PRIOR TO ATTEMPT TO FIX IT 
+def delete_comment(request, slug, comment_id):
             queryset = Post.objects.filter(status=1)
-            post = get_object_or_404(Comment, pk=comment_id)
+            comment = get_object_or_404(Comment, pk=comment_id)
 
             if comment.author == request.user: 
                 comment.delete()
@@ -95,7 +115,7 @@ def delete_comment(request, slug, comment_id):
 
             return HttpResponseRedirect(reverse('post_full', args=[slug]))
             
-
+"""
 
             
 

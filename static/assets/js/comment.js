@@ -71,7 +71,55 @@ document.addEventListener('DOMContentLoaded', function() {
             modalDelete.show();
     });
     }
+
+    // Add event listener for the confirm delete button
+confirmDelete.addEventListener("click", function(event) {
+    event.preventDefault();
+    
+    const url = this.getAttribute('href');
+    
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': getCookie('csrftoken'),  // You need to implement getCookie function
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        }
+        throw new Error('Network response was not ok.');
+    })
+    .then(data => {
+        console.log("Comment deleted successfully");
+        // Remove the comment from the DOM
+        const commentElement = document.getElementById(`comment${data.comment_id}`);
+        if (commentElement) {
+            commentElement.remove();
+        }
+        modalDelete.hide();
+    })
+    .catch(error => {
+        console.error('There was a problem with the fetch operation:', error.message);
+    });
 });
+
+// Function to get CSRF token
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
 
     /*document.addEventListener('DOMContentLoaded', function() {
         const editBtns = document.getElementsByClassName("edit-btn");
