@@ -40,6 +40,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    for (let button of buttonsDelete) {
+              button.addEventListener("click", function(event) {
+                  event.preventDefault();
+                 const commentId = this.getAttribute("comment_id");
+                   confirmDelete.setAttribute('data-comment-id', commentId);
+                   modalDelete.show();
+              });
+           }
+
     confirmDelete.addEventListener("click", function(event) {
         event.preventDefault();
         console.log("Confirm delete clicked");
