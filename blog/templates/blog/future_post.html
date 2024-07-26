@@ -1,8 +1,7 @@
-{% extends 'base.html' %} {% block content %}
-
-
+{% extends 'base.html' %}
 {% load static %}
 
+{% block content %}
 <div class="container">
     <h1>Upcoming Articles For You To Look Forward To</h1>
     <div class="list-group">
@@ -12,10 +11,9 @@
                 <p class="mb-1">{{ post.author }}</p>
                 <small>Created on: {{ post.created_on }}</small>
             </div>
+        {% empty %}
+            <p class="list-group-item">No upcoming articles at the moment.</p>
         {% endfor %}
     </div>
 </div>
-
-
 {% endblock %}
-
