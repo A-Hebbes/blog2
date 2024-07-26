@@ -9,3 +9,5 @@ class CommentFormValidationTest(TestCase):
     def test_empty_comment_rejection(self):
         empty_comment = CommentForm({'body': ''})
         self.assertFalse(empty_comment.is_valid(), "Valid Form")
+        self.assertIn('body', empty_comment.errors)
+        self.assertEqual(empty_comment.errors['body'][0], 'This field is required.')
