@@ -14,50 +14,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-   
-    for (let btn of editBtns) {
-        btn.addEventListener("click", (event) => {
-            console.log("Edit button clicked");
-            let commentId = event.target.getAttribute("comment_id");
-            console.log("Comment ID:", commentId);
-            
-            let commentElement = document.getElementById(`comment${commentId}`);
-            console.log("Comment element found:", commentElement !== null);
-            
-            if (!commentElement) {
-                console.error(`Comment element not found for ID: comment${commentId}`);
-                return;
-            }
-            
-            let commentContent = commentElement.innerText;
-            console.log("Comment content:", commentContent);
-           
-            commentInput.value = commentContent.trim();
-            submitBtn.innerText = "Update";
-            
-            let newAction = `/${post_slug}/comment_edit/${commentId}/`;
-            console.log("Setting form action to:", newAction);
-            commentFormElement.setAttribute("action", newAction);
-            
-            console.log("Form action is now:", commentFormElement.getAttribute("action"));
+  
 
-            commentFormElement.scrollIntoView({ behavior: "smooth" });
-        });
-    }
-    
+for (let btn of editBtns) {
+    btn.addEventListener("click", (event) => {
+        console.log("Edit button clicked");
+        let commentId = event.target.getAttribute("comment_id");
+        console.log("Comment ID:", commentId);
+        
+        let commentElement = document.getElementById(`comment${commentId}`);
+        if (!commentElement) {
+            console.error(`Comment element not found for ID: comment${commentId}`);
+            return;
+        }
+        
+        let commentContent = commentElement.innerText;
+        console.log("Comment content:", commentContent);
+       
+        commentInput.value = commentContent.trim();
+        submitBtn.innerText = "Update";
+        
+        let newAction = `/${post_slug}/comment_edit/${commentId}/`;
+        console.log("Setting form action to:", newAction);
+        commentFormElement.setAttribute("action", newAction);
+        
+        console.log("Form action is now:", commentFormElement.getAttribute("action"));
 
-
-    
-    for (let button of buttonsDelete) {
-        button.addEventListener("click", (event) => {
-            let commentId = event.target.getAttribute("comment_id");
-            console.log("Delete Button Clicked, comment ID:", commentId);
-            
-            confirmDelete.setAttribute('data-comment-id', commentId);
-            
-            modalDelete.show();
-        });
-    }
+        commentFormElement.scrollIntoView({ behavior: "smooth" });
+    });
+}
 
     confirmDelete.addEventListener("click", function(event) {
         event.preventDefault();
