@@ -7,18 +7,17 @@ from .models import Post
 class BlogViewsTest(TestCase):
     def setUp(self):
         self.user = User.objects.create_superuser(
-            username = "testSuper",
-            password = "Password",
-            email = "tester@testing.com"
+            username="testSuper",
+            password="Password",
+            email="tester@testing.com"
         )
         self.post = Post(
             title="Test Title", author=self.user,
-            slug="test-blog-title", excerpt = "Test Blog Excerpt",
-            content ="Test Blog Content", status=1)
+            slug="test-blog-title", excerpt="Test Blog Excerpt",
+            content="Test Blog Content", status=1)
         self.post.save()
 
     def test_post_full_with_comment_form(self):
-
         response = self.client.get(reverse('post_full', args=['test-blog-title']))
 
         self.assertEqual(response.status_code, 200)
@@ -33,10 +32,14 @@ class BlogViewsTest(TestCase):
         )
 
         post_data = {
-    'body': 'Comment for test.'
-}
+            'body': 'Comment for test.'
+        }
 
-response = self.client.post(reverse(
-    'post_full', args=['blog']), post_data)
+        response = self.client.post(reverse(
+            'post_full', args=[self.post.slug]), post_data)
 
-    self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(
+        b'Your comment is waiting for approval from an admin',
+        response.content
+        )
