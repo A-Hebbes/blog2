@@ -67,7 +67,9 @@
 </div>
 
 <!-- Comments Section for Authenticated Users -->
-<div class="col-md-4 card mb-4 mt-3">
+ <div class="row justify-content-center">
+<div class="col-12 col-md-8 col-lg-6">
+    <div class="card mb-4 mt-3">
     <div class="card-body">
         {% if user.is_authenticated %}
             <h3>Let Us Know What You Think:</h3>
@@ -82,7 +84,8 @@
         {% endif %}
     </div>
 </div>
-
+</div>
+</div>
 <!-- Modal For Deleting Comments -->
 <div class="fade modal" id="modalDelete" tabindex="-1" aria-labelledby="modalDeleteLabel" aria-hidden="true">
     <div class="modal-dialog">
