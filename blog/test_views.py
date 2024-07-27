@@ -17,3 +17,7 @@ class BlogViewsTest(TestCase):
             content ="Test Blog Content", status=1)
         self.post.save()
 
+    def test_post_full_with_comment_form(self):
+
+    response = self.client.get(reverse('post_full', args=['test-blog-title']))
+
