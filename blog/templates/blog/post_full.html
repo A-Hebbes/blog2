@@ -41,7 +41,7 @@
 
 <!-- Displays The Comments -->
 <div class="row">
-    <div class="container col-md-8 card mb-4 mt-3">
+    <div class="container col-md-8 card mb-4 mt-3 comments-section">
         <h3>Comments:</h3>
         <div class="card-body">
             {% for comment in user_comments %}
@@ -57,8 +57,8 @@
                         <p class="approval-message">Your comment is waiting for approval from an admin</p>
                     {% endif %}
                     {% if user.is_authenticated and comment.author == user %}
-                        <button class="btn delete-btn" comment_id="{{ comment.id }}">Delete Comment</button>
-                        <button class="btn edit-btn" comment_id="{{ comment.id }}">Edit Comment</button>
+                        <button class="btn btn-outline-dark delete-btn" comment_id="{{ comment.id }}">Delete Comment</button>
+                        <button class="btn btn-outline-dark edit-btn" comment_id="{{ comment.id }}">Edit Comment</button>
                     {% endif %}
                 </div>
             {% endfor %}
@@ -69,7 +69,7 @@
 <!-- Comments Section for Authenticated Users -->
  <div class="row justify-content-center">
 <div class="col-12 col-md-8 col-lg-6">
-    <div class="card mb-4 mt-3">
+    <div class="card mb-4 mt-3 comments-section">
     <div class="card-body">
         {% if user.is_authenticated %}
             <h3>Let Us Know What You Think:</h3>

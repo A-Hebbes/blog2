@@ -183,6 +183,19 @@ body {
     color: var(--color1); 
   }
 
+  .btn {background-color: #F2E8CF;
+    color: #344e41; 	
+}
+
+.btn:hover {background-color: #386641;
+    color:#F2E8CF;
+  -webkit-transition: 1s ease;
+}
+
+.comments-section {
+                   color: var(--color1)
+}
+
   /*.edit-button {TOO FILL IN LATER}*/
 
   @media (max-width: 768px) {
