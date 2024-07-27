@@ -59,23 +59,39 @@ body {
 }
 
 .header {
-    margin-top: 0.625em;
-    overflow: hidden;
-    position: relative;
-    display: inline-block;
-    height: 33vh;
-    width: 100%;
+    /*margin-top: 0.625em;*/
+    /*overflow: hidden;*/
+    /*position: relative;*/
+    /*display: inline-block;*/
+    /*height: 33vh;*/
+    /*width: 100%;*/
+    background-color: var(--color1);
+    min-height: 200px;
+    padding: 2rem 0;
 }
 
 .header-text {
-    background-color: var(--color1);
+    /*background-color: var(--color1);*/
     color: var(--color5);
-    position: relative;
+    /*position: relative;*/
+    padding: 1rem;
 }
 
 .header-image {
-    position: relative;
-    overflow: hidden;
+    /*position: relative;
+    overflow: hidden;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+}
+
+.header-image img {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    max-height: 300px;
 }
 
 .post-button{
@@ -90,13 +106,16 @@ body {
 }
 
 .post-title {
-    margin-top: 10%;
-    margin-left: 5%;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    word-wrap: break-word;
 }
 
 .post-info {
-    margin-left: 5%;
-    color: var(--color5);
+    font-size: 1rem;
+    /*margin-left: 5%;*/
+    margin-bottom: 0;
+    /*color: var(--color5);*/
 }
 
 /* .comment-item */
@@ -165,3 +184,17 @@ body {
   }
 
   /*.edit-button {TOO FILL IN LATER}*/
+
+  @media (max-width: 768px) {
+    .header {
+        padding: 1rem 0;
+    }
+
+    .post-title {
+        font-size: 1.5rem;
+    }
+
+    .post-info {
+        font-size: 0.9rem;
+    }
+}
