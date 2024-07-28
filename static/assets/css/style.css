@@ -34,6 +34,15 @@ body {
 
 .card {
     border: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 1em;
+}
+
+.card-body {
+    flex: 1 0 auto;
 }
 
 .image-container {
@@ -41,10 +50,10 @@ body {
 }
 
 .image-flash {
-    position: absolute;
-    bottom: 5%;
-    min-width: 30%;
-    left: -2px;
+    position: relative;
+    bottom: 0;
+    min-width: 30px;
+    
     background-color: var(--color3);
 }
 
