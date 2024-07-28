@@ -13,6 +13,12 @@ body {
     color: var(--color5);
 }
 
+.box-background {
+    background-color: var(--color5);
+    color: var(--color1);
+
+}
+
 /* Navigation Styles */
 .custom-navbar {
     background-color: var(--color1); 
@@ -34,12 +40,16 @@ body {
 
 /* Card Styles */
 .card {
-    border: none;
+    border: solid;
     height: 100%;
     display: flex;
     flex-direction: column;
     margin: 0;
-    padding: 1em;
+    
+}
+
+.card-title { 
+    color: var(--color5);
 }
 
 .card-body-bg {
@@ -206,8 +216,8 @@ body {
 
 /* Footer Styles */
 footer.footer {
-    background-color: red;
-    color: black;
+    background-color: var(--color1);
+    
     padding: 20px 0;
 }
 
