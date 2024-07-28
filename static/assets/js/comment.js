@@ -35,19 +35,18 @@ document.addEventListener('DOMContentLoaded', function() {
             commentFormElement.setAttribute("action", newAction);
             
             console.log("Form action is now:", commentFormElement.getAttribute("action"));
-
             commentFormElement.scrollIntoView({ behavior: "smooth" });
         });
     }
 
     for (let button of buttonsDelete) {
-              button.addEventListener("click", function(event) {
-                  event.preventDefault();
-                 const commentId = this.getAttribute("comment_id");
-                   confirmDelete.setAttribute('data-comment-id', commentId);
-                   modalDelete.show();
-              });
-           }
+        button.addEventListener("click", function(event) {
+            event.preventDefault();
+            const commentId = this.getAttribute("comment_id");
+            confirmDelete.setAttribute('data-comment-id', commentId);
+            modalDelete.show();
+        });
+    }
 
     confirmDelete.addEventListener("click", function(event) {
         event.preventDefault();

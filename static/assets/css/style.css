@@ -11,6 +11,7 @@
 
 body {
     background-color: var(--color2);
+    color: var(--color5)
 }
 
 .custom-navbar {
@@ -195,6 +196,21 @@ body {
 .comments-section {
                    color: var(--color1)
 }
+footer.footer {
+    background-color: red;
+    color: black;
+    padding: 20px 0;
+  }
+  
+  footer.footer .social-links a {
+    color: black;
+    margin: 0 10px;
+    text-decoration: none;
+  }
+  
+  footer.footer .social-links a:hover {
+    color: white;
+  }
 
   /*.edit-button {TOO FILL IN LATER}*/
 
