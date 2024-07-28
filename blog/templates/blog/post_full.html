@@ -5,13 +5,13 @@
 {% block content %}
 <div class="header">
     <div class="container">
-        <div class="row align-items-center">
+        <div class="row g-0">
             <div class="col-md-6 header-text">
                 <h1 class="post-title">{{ post.title }}</h1>
-                <p class="post-info"><i class="fas fa-user"></i>{{ post.author }} | <i class="far fa-calendar"></i> {{ post.created_on }}</p>
+                <p class="post-info">{{ post.author }} | {{ post.created_on }}</p>
             </div>
             <div class="d-none d-md-block col-md-6 header-image">
-                <img src="{% static 'assets/images/Library-200.jpg' %}" class="img-fluid" alt="Library Image">
+                <img src="{% static 'assets/images/Library-200.jpg' %}" class="full-width" alt="Library Image">
             </div>
         </div>
     </div>
@@ -30,8 +30,8 @@
 <!-- Comment Counter -->
 <div class="row">
     <div class="col-12 ps-4">
-        <strong class="text-on-dark">
-            <i class="far fa-comments"> <strong>Comments</strong></i> {{ total_comments }}
+        <strong class="header-text">
+            <i class="far fa-comments"><strong>Comments</strong></i></i> {{ total_comments }}
         </strong>
     </div>
     <div class="col-12">
@@ -41,35 +41,45 @@
 
 <!-- Displays The Comments -->
 <div class="row">
-    <div class="container col-md-8 card mb-4 mt-3 comments-section">
+    <div class="container col-md-8 card mb-4 mt-3 comments-section card-body-bg">
         <h3>Comments:</h3>
-        <div class="card-body">
+        <div class="card-body card-body-bg">
             {% for comment in user_comments %}
-                <div class="p-2 comment-item{% if not comment.approved and comment.author == user %} faded{% elif not comment.approved %} d-none{% endif %}">
-                    <p class="font-weight-bold">
-                        {{ comment.author }}
-                        <span class="font-weight-normal">{{ comment.created_on }}</span> said:
-                    </p>
-                    <div id="comment{{ comment.id }}">
+                <div class="comment-container mb-4 p-3 border rounded{% if not comment.approved and comment.author == user %} faded{% elif not comment.approved %} d-none{% endif %}">
+                    <div class="comment-header d-flex justify-content-between align-items-center mb-2">
+                        <p class="font-weight-bold mb-0">
+                            {{ comment.author }}
+                            <span class="font-weight-normal text-muted ml-2">{{ comment.created_on }}</span>
+                        </p>
+                        {% if user.is_authenticated and comment.author == user %}
+                            <div class="comment-actions">
+                                <button class="btn btn-sm btn-outline-dark delete-btn header-text" comment_id="{{ comment.id }}">Delete</button>
+                                <button class="btn btn-sm btn-outline-dark edit-btn header-text" comment_id="{{ comment.id }}">Edit</button>
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="comment-body" id="comment{{ comment.id }}">
                         {{ comment.body | linebreaks }}
                     </div>
+                    
                     {% if not comment.approved and comment.author == user %}
-                        <p class="approval-message">Your comment is waiting for approval from an admin</p>
-                    {% endif %}
-                    {% if user.is_authenticated and comment.author == user %}
-                        <button class="btn btn-outline-dark delete-btn" comment_id="{{ comment.id }}">Delete Comment</button>
-                        <button class="btn btn-outline-dark edit-btn" comment_id="{{ comment.id }}">Edit Comment</button>
+                        <div class="approval-message mt-2 p-2 bg-light text-muted">
+                            <small>Your comment is waiting for approval from an admin</small>
+                        </div>
                     {% endif %}
                 </div>
+            {% empty %}
+                <p class="text-muted">No comments yet. Be the first to comment.</p>
             {% endfor %}
         </div>
     </div>
 </div>
 
 <!-- Comments Section for Authenticated Users -->
- <div class="row justify-content-center">
-<div class="col-12 col-md-8 col-lg-6">
-    <div class="card mb-4 mt-3 comments-section">
+<div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+        <div class="card mb-4 mt-3">
     <div class="card-body">
         {% if user.is_authenticated %}
             <h3>Let Us Know What You Think:</h3>
@@ -84,8 +94,7 @@
         {% endif %}
     </div>
 </div>
-</div>
-</div>
+
 <!-- Modal For Deleting Comments -->
 <div class="fade modal" id="modalDelete" tabindex="-1" aria-labelledby="modalDeleteLabel" aria-hidden="true">
     <div class="modal-dialog">

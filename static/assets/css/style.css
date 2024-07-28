@@ -41,8 +41,9 @@ body {
     padding: 1em;
 }
 
-.card-body {
-    flex: 1 0 auto;
+.card-body-bg {
+    
+    background-color: var(--color5);
 }
 
 .image-container {
@@ -106,7 +107,7 @@ body {
 
 .post-button{
     text-decoration: none;
-    color: var(--color4);
+    color: var(--color2);
 }
 
 .post-button:hover,
@@ -172,6 +173,31 @@ body {
     color: #721c24;
   } 
 
+  .comment-container {
+    background-color: #f8f9fa;
+    transition: background-color 0.3s ease;
+}
+
+.comment-container:hover {
+    background-color: #e9ecef;
+}
+
+.faded {
+    opacity: 0.6;
+}
+
+.comment-actions .btn {
+    transition: all 0.3s ease;
+}
+
+.comment-actions .btn:hover {
+    transform: translateY(-2px);
+}
+
+.approval-message {
+    border-left: 3px solid #ffc107;
+}
+
   .close-btn {
     background: none;
     border: none;
@@ -197,9 +223,21 @@ body {
     color: #344e41; 	
 }
 
+.button{background-color: #F2E8CF;
+    color: #344e41; 	
+}
+
+
 .btn:hover {background-color: #386641;
     color:#F2E8CF;
   -webkit-transition: 1s ease;
+}
+
+button:hover,
+.button:hover {
+    background-color: #386641;
+    color: #F2E8CF;
+    transition: all 1s ease;
 }
 
 .comments-section {
