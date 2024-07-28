@@ -1,19 +1,19 @@
-/* Guidance for styles.css taken from Code Institute Blog Project Guide */
-
+/* Color Variables */
 :root {
     --color1: #344e41; /* Primary colour */
-    --color2: #3a5a40; /*  Secondary colour */
-    --color3: #588157; /*  Background colour */
-    --color4: #a3b18a; /*  Reserve colour */
-    --color5: #dad7cd; /*  Text colour */
-    
+    --color2: #3a5a40; /* Secondary colour */
+    --color3: #588157; /* Background colour */
+    --color4: #a3b18a; /* Reserve colour */
+    --color5: #dad7cd; /* Text colour */
 }
 
+/* Global Styles */
 body {
     background-color: var(--color2);
-    color: var(--color5)
+    color: var(--color5);
 }
 
+/* Navigation Styles */
 .custom-navbar {
     background-color: var(--color1); 
 }
@@ -32,6 +32,7 @@ body {
     color: var(--color4);
 }  
 
+/* Card Styles */
 .card {
     border: none;
     height: 100%;
@@ -42,7 +43,6 @@ body {
 }
 
 .card-body-bg {
-    
     background-color: var(--color5);
 }
 
@@ -58,7 +58,6 @@ body {
     position: relative;
     bottom: 0;
     min-width: 30px;
-    
     background-color: var(--color3);
 }
 
@@ -69,37 +68,27 @@ body {
 
 .contributor {
     color: var(--color5);
-    margin: o.25em;
+    margin: 0.25em;
     text-transform: uppercase;
 }
 
+/* Header Styles */
 .header {
-    /*margin-top: 0.625em;*/
-    /*overflow: hidden;*/
-    /*position: relative;*/
-    /*display: inline-block;*/
-    /*height: 33vh;*/
-    /*width: 100%;*/
     background-color: var(--color1);
     min-height: 200px;
     padding: 2rem 0;
 }
 
 .header-text {
-    /*background-color: var(--color1);*/
     color: var(--color5);
-    /*position: relative;*/
     padding: 1rem;
 }
 
 .header-image {
-    /*position: relative;
-    overflow: hidden;*/
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
-
 }
 
 .header-image img {
@@ -109,7 +98,8 @@ body {
     max-height: 300px;
 }
 
-.post-button{
+/* Post Styles */
+.post-button {
     text-decoration: none;
     color: var(--color2);
 }
@@ -128,60 +118,22 @@ body {
 
 .post-info {
     font-size: 1rem;
-    /*margin-left: 5%;*/
     margin-bottom: 0;
-    /*color: var(--color5);*/
 }
 
-/* .comment-item */
+/* Text Color Utilities */
+.text-on-light { color: var(--color1); }
+.text-on-dark { color: var(--color5); }
 
-.text-on-light {color: var(--color1)}
-
-.text-on-dark {color: var(--color5)}
-
-/* Style For Comment Message */
-
-/* THIS NEEDS TO BE FIXED AS THE STYLING DOESNT LOOK GREAT!*/
-
-.my-custom-messages {
-    margin-top: 1.25em;
-  }
-
-  .custom-alert {
-    padding: 1em;
-    border: 0.0625em solid transparent;
-    border-radius: 0.25em;
-    position: relative;
-    background-color: var(--color4);
+/* Comment Styles */
+.comments-section {
     color: var(--color1);
-    margin-bottom: 0.625em;
-  }
+}
 
-  .custom-alert.alert-success {
-    background-color: var(--color3); 
-    color: var(--color5); 
-  }
-
-  .custom-alert.alert-info {
-    background-color: var(--color3); 
-    color: var(--color5); 
-  }
-
-  .custom-alert.alert-info {
-    background-color: var(--color2); 
-    color: var(--color5); 
-  }
-
-  .custom-alert.alert-danger {
-    background-color: #f8d7da;
-    color: #721c24;
-  } 
-
-  .comment-container {
+.comment-container {
     background-color: #f8f9fa;
     transition: background-color 0.3s ease;
 }
-
 
 .comment-container:hover {
     background-color: #e9ecef;
@@ -203,70 +155,74 @@ body {
     border-left: 3px solid #ffc107;
 }
 
-  .close-btn {
-    background: none;
-    border: none;
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    font-size: 1.2em;
-    cursor: pointer;
-  }
+/* Alert Styles */
+.my-custom-messages {
+    margin-top: 1.25em;
+}
 
-  .close-btn {
-    background: none;
-    border: none;
-    position: absolute;
-    top:0.3125em;
-    right: 0.625em;
-    font-size: 1.2em;
-    cursor: pointer;
-    color: var(--color1); 
-  }
+.custom-alert {
+    padding: 1em;
+    border: 0.0625em solid transparent;
+    border-radius: 0.25em;
+    position: relative;
+    background-color: var(--color4);
+    color: var(--color1);
+    margin-bottom: 0.625em;
+}
 
-  .btn {background-color: #F2E8CF;
+.custom-alert.alert-success,
+.custom-alert.alert-info {
+    background-color: var(--color3); 
+    color: var(--color5); 
+}
+
+.custom-alert.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Button Styles */
+.btn, .button {
+    background-color: #F2E8CF;
     color: #344e41; 	
 }
 
-.button{background-color: #F2E8CF;
-    color: #344e41; 	
-}
-
-
-.btn:hover {background-color: #386641;
-    color:#F2E8CF;
-  -webkit-transition: 1s ease;
-}
-
-button:hover,
-.button:hover {
+.btn:hover, button:hover, .button:hover {
     background-color: #386641;
     color: #F2E8CF;
     transition: all 1s ease;
 }
 
-.comments-section {
-                   color: var(--color1)
+.close-btn {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 0.3125em;
+    right: 0.625em;
+    font-size: 1.2em;
+    cursor: pointer;
+    color: var(--color1); 
 }
+
+/* Footer Styles */
 footer.footer {
     background-color: red;
     color: black;
     padding: 20px 0;
-  }
-  
-  footer.footer .social-links a {
+}
+
+footer.footer .social-links a {
     color: black;
     margin: 0 10px;
     text-decoration: none;
-  }
-  
-  footer.footer .social-links a:hover {
+}
+
+footer.footer .social-links a:hover {
     color: white;
-  }
+}
 
-  /*.edit-button {TOO FILL IN LATER}*/
-
-  @media (max-width: 768px) {
+/* Media Queries */
+@media (max-width: 768px) {
     .header {
         padding: 1rem 0;
     }
