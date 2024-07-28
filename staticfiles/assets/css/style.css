@@ -11,6 +11,7 @@
 
 body {
     background-color: var(--color2);
+    color: var(--color5)
 }
 
 .custom-navbar {
@@ -33,6 +34,16 @@ body {
 
 .card {
     border: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 1em;
+}
+
+.card-body-bg {
+    
+    background-color: var(--color5);
 }
 
 .image-container {
@@ -40,10 +51,10 @@ body {
 }
 
 .image-flash {
-    position: absolute;
-    bottom: 5%;
-    min-width: 30%;
-    left: -2px;
+    position: relative;
+    bottom: 0;
+    min-width: 30px;
+    
     background-color: var(--color3);
 }
 
@@ -59,28 +70,44 @@ body {
 }
 
 .header {
-    margin-top: 0.625em;
-    overflow: hidden;
-    position: relative;
-    display: inline-block;
-    height: 33vh;
-    width: 100%;
+    /*margin-top: 0.625em;*/
+    /*overflow: hidden;*/
+    /*position: relative;*/
+    /*display: inline-block;*/
+    /*height: 33vh;*/
+    /*width: 100%;*/
+    background-color: var(--color1);
+    min-height: 200px;
+    padding: 2rem 0;
 }
 
 .header-text {
-    background-color: var(--color1);
+    /*background-color: var(--color1);*/
     color: var(--color5);
-    position: relative;
+    /*position: relative;*/
+    padding: 1rem;
 }
 
 .header-image {
-    position: relative;
-    overflow: hidden;
+    /*position: relative;
+    overflow: hidden;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+}
+
+.header-image img {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    max-height: 300px;
 }
 
 .post-button{
     text-decoration: none;
-    color: var(--color4);
+    color: var(--color2);
 }
 
 .post-button:hover,
@@ -90,13 +117,160 @@ body {
 }
 
 .post-title {
-    margin-top: 10%;
-    margin-left: 5%;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    word-wrap: break-word;
 }
 
 .post-info {
-    margin-left: 5%;
-    color: var(--color5);
+    font-size: 1rem;
+    /*margin-left: 5%;*/
+    margin-bottom: 0;
+    /*color: var(--color5);*/
 }
 
+/* .comment-item */
+
 .text-on-light {color: var(--color1)}
+
+.text-on-dark {color: var(--color5)}
+
+/* Style For Comment Message */
+
+/* THIS NEEDS TO BE FIXED AS THE STYLING DOESNT LOOK GREAT!*/
+
+.my-custom-messages {
+    margin-top: 1.25em;
+  }
+
+  .custom-alert {
+    padding: 1em;
+    border: 0.0625em solid transparent;
+    border-radius: 0.25em;
+    position: relative;
+    background-color: var(--color4);
+    color: var(--color1);
+    margin-bottom: 0.625em;
+  }
+
+  .custom-alert.alert-success {
+    background-color: var(--color3); 
+    color: var(--color5); 
+  }
+
+  .custom-alert.alert-info {
+    background-color: var(--color3); 
+    color: var(--color5); 
+  }
+
+  .custom-alert.alert-info {
+    background-color: var(--color2); 
+    color: var(--color5); 
+  }
+
+  .custom-alert.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+  } 
+
+  .comment-container {
+    background-color: #f8f9fa;
+    transition: background-color 0.3s ease;
+}
+
+.comment-container:hover {
+    background-color: #e9ecef;
+}
+
+.faded {
+    opacity: 0.6;
+}
+
+.comment-actions .btn {
+    transition: all 0.3s ease;
+}
+
+.comment-actions .btn:hover {
+    transform: translateY(-2px);
+}
+
+.approval-message {
+    border-left: 3px solid #ffc107;
+}
+
+  .close-btn {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+
+  .close-btn {
+    background: none;
+    border: none;
+    position: absolute;
+    top:0.3125em;
+    right: 0.625em;
+    font-size: 1.2em;
+    cursor: pointer;
+    color: var(--color1); 
+  }
+
+  .btn {background-color: #F2E8CF;
+    color: #344e41; 	
+}
+
+.button{background-color: #F2E8CF;
+    color: #344e41; 	
+}
+
+
+.btn:hover {background-color: #386641;
+    color:#F2E8CF;
+  -webkit-transition: 1s ease;
+}
+
+button:hover,
+.button:hover {
+    background-color: #386641;
+    color: #F2E8CF;
+    transition: all 1s ease;
+}
+
+.comments-section {
+                   color: var(--color1)
+}
+footer.footer {
+    background-color: red;
+    color: black;
+    padding: 20px 0;
+  }
+  
+  footer.footer .social-links a {
+    color: black;
+    margin: 0 10px;
+    text-decoration: none;
+  }
+  
+  footer.footer .social-links a:hover {
+    color: white;
+  }
+
+  /*.edit-button {TOO FILL IN LATER}*/
+
+  @media (max-width: 768px) {
+    .header {
+        padding: 1rem 0;
+    }
+
+    .post-title {
+        font-size: 1.5rem;
+    }
+
+    .post-info {
+        font-size: 0.9rem;
+    }
+}
