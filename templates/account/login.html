@@ -15,7 +15,7 @@
       <p>
       {% blocktrans %} 
        If you would like to leave a comment here at Book Blog,
-       please log in. If you're not registered yet, <a class="link" href="{{ signup_url }}">register here</a> 
+       please log in. If you're not registered yet, <a class="link button" href="{{ signup_url }}">register here</a> 
        and then comment to your heart's content.
        {% endblocktrans %} 
       </p>
@@ -30,7 +30,7 @@
           {% if redirect_field_value %}
           <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
           {% endif %}
-          <button class="btn signup-btn right" type="submit">{% trans "Sign In" %}</button>
+          <button class="btn signup-btn right button" type="submit">{% trans "Sign In" %}</button>
           
       </form>
   </div>
