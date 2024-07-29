@@ -31,8 +31,8 @@
         <li><a href="{% url 'account_email' %}">{% trans "Change Email" %}</a></li>
         <li><a href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a></li>
         {% else %}
-        <li><a href="{% url 'account_login' %}">{% trans "Sign In" %}</a></li>
-        <li><a href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a></li>
+        <li><a href="{% url 'account_login' %}" class="button">{% trans "Sign In" %}</a></li>
+        <li><a href="{% url 'account_signup' %}" class="button">{% trans "Sign Up" %}</a></li>
         {% endif %}
       </ul>
     </div>
