@@ -97,7 +97,7 @@ As a site user:
 ## Structure
 
 ### Home Page
-![](image_placeholder)
+![Home Page](/readme/assets/book-blog-home.png)
 - The home page displays the site's name and provides a paginated list of blog posts displaying the blog title and creation information. 
     #### User Goal:
     >   - To quickly see a range of posts that can be navigated to easily. 
@@ -109,7 +109,7 @@ As a site user:
     >   - To provide the user key information to use the site effectively. 
 
 ### Full Post Page
-![](image_placeholder)
+![Full Post](/readme/assets/book-blog-full-post.png)
 - This is the page in which readers can view a post and, if logged in, can comment on the post. 
     #### User Goal:
     >   - To read a blog post about a book I may be interested in. 
@@ -119,7 +119,7 @@ As a site user:
     >   - To give the user the opportunity to comment on posts if they are logged in. 
 
 ### Upcoming Post Page
-![](image_placeholder)
+![Upcoming Posts](/readme/assets/book-blog-upcoming-post.png)
 - This page allows to see a list of upcoming posts. 
     #### User Goal:
     >   - To see what future posts are planned so that I can be aware of anything of interest that is upcoming. 
@@ -127,54 +127,72 @@ As a site user:
     #### Website Goal:
     >   - To display only the basic information of draft posts so that users can be informed of what is comming up. 
 
+### Sign-in / Sign-up Pages
+![Sign In](/readme/assets/book-blog-sign-in.png)
+- These pages allow the user to sign in and sign up.  
+    #### User Goal:
+    >   - To be able to gain additional priviliges on the site and be able to engage in the community.  
+   
+    #### Website Goal:
+    >   - To increase opportunity for user engagement whilst also maintaining control of the site's use.  
 
 
 # Wireframes
-Add wireframes
+![Wireframe Home](/readme/assets/book-blog-wireframe-hoome.png)
+![Wireframe Full Post Page](/readme/assets/book-blog-wireframe-full-post.png)
+![Wireframe Upcoming Post](/readme/assets/book-blog-wireframe-upcoming-post.png)
+
 
 # Design
-Discuss colours mention coolors
+The design used muted green shades, this aimed to provide a calm environment such as one that would be conducive for reading.
+[Coolors] (https://coolors.co/) was used to find a good colour palette. 
+
+![Colour Palette](/readme/assets/book-blog-colour-palette.png)
+
 
 # Features
-## Existing Features
-Features, 
-
-# Features
 
 ## Existing Features
 
-### Navigation
+### 1. Blog Post List
+- Displays an organized list of blog posts
+- Includes pagination for easy navigation
 
+### 2. Full Blog Post View
+- Shows full content of a post when title is clicked
 
-### Home Page
+### 3. Comments System
+- Users can view comments on posts
+- Registered users can leave comments
+- Users can edit and delete their own comments
+- Comments require approval before being displayed
 
+### 4. User Authentication
+- User registration functionality
+- User login/logout
 
-### Blog Post List
+### 5. Admin Features
+- CRUD operations for blog posts
+- Ability to save drafts and publish later
+- Comment moderation ability
 
-
-### Individual Blog Post View
-
-
-### Upcoming Posts List
-
-
-### Comments Section
-
-
-### User Authentication
-- Login/logout functionality
-- User registration 
-
-
-### Admin Panel
-
+### 6. Upcoming Posts Preview
+- Shows a list of upcoming blog posts which are currently in draft
 
 
 ## Future Features
+
 - Category/tag filtering for posts
+  - Allows users to find posts related to specific genres/topics.
+
 - User ratings for books
+  - Users could rate books on a scale, this will help increase engagemnet and allow other users to get an idea of how popular a book is.
+
 - Newsletter signup
-- User profiles
+  - Users will be able to subscribe to a newsletter.
+
+- Enhanced user profiles
+  - Users could have profiles and the ability to connect with other users. This will allow for users to contact each other about books that have been reviewed and others which also may be of interest.
 
 # Data Model
 Describe data model and addd diagram 
