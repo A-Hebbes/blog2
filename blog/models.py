@@ -7,6 +7,7 @@ STATUS = (
     (2, 'Archived'),
 )
 
+
 class Post(models.Model):
     title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
@@ -24,6 +25,7 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
 
 class Comment(models.Model):
     post = models.ForeignKey(

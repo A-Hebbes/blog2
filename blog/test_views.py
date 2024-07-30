@@ -4,6 +4,7 @@ from django.test import TestCase
 from .forms import CommentForm
 from .models import Post
 
+
 class BlogViewsTest(TestCase):
     def setUp(self):
         self.user = User.objects.create_superuser(
@@ -18,7 +19,9 @@ class BlogViewsTest(TestCase):
         self.post.save()
 
     def test_post_full_with_comment_form(self):
-        response = self.client.get(reverse('post_full', args=['test-blog-title']))
+        response = self.client.get(
+            reverse('post_full', args=['test-blog-title'])
+            )
 
         self.assertEqual(response.status_code, 200)
         self.assertIn(b"Test Title", response.content)
@@ -40,6 +43,6 @@ class BlogViewsTest(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertIn(
-        b'Your comment is waiting for approval from an admin',
-        response.content
+            b'Your comment is waiting for approval from an admin',
+            response.content
         )

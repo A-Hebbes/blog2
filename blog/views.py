@@ -6,10 +6,12 @@ from django.http import JsonResponse
 from .models import Post, Comment
 from .forms import CommentForm
 
+
 class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1)
     template_name = "blog/index.html"
     paginate_by = 6
+
 
 def post_full(request, slug):
     queryset = Post.objects.filter(status=1)
@@ -26,13 +28,15 @@ def post_full(request, slug):
             comment.save()
             messages.add_message(
                 request, messages.SUCCESS,
-                'Your Comment Has Been Submitted. Your comment will be published once approved by the admin.'
+                'Your Comment Has Been Submitted. '
+                'Your comment will be published once approved by the admin.'
             )
         else:
             messages.add_message(
-                request, 
+                request,
                 messages.ERROR,
-                'There was an error with your comment submission. Please try again.'
+                'There was an error with your comment submission. '
+                'Please try again.'
             )
 
     user = request.user
@@ -50,9 +54,11 @@ def post_full(request, slug):
         },
     )
 
+
 def draft_posts(request):
     drafts = Post.objects.filter(status=0)
     return render(request, 'blog/future_post.html', {'drafts': drafts})
+
 
 def edit_comment(request, slug, comment_id):
     if request.method == "POST":
@@ -66,11 +72,20 @@ def edit_comment(request, slug, comment_id):
             comment.post = post
             comment.approved = False
             comment.save()
-            messages.add_message(request, messages.SUCCESS, 'The Comment Has Been Updated')
+            messages.add_message(
+                request,
+                messages.SUCCESS,
+                'The Comment Has Been Updated'
+            )
         else:
-            messages.add_message(request, messages.ERROR, 'There Was An Error Updating This Comment')
-        
+            messages.add_message(
+                request,
+                messages.ERROR,
+                'There Was An Error Updating This Comment'
+            )
+
         return HttpResponseRedirect(reverse('post_full', args=[slug]))
+
 
 def delete_comment(request, slug, comment_id):
     comment = get_object_or_404(Comment, pk=comment_id)
@@ -80,11 +95,25 @@ def delete_comment(request, slug, comment_id):
         if request.headers.get('x-requested-with') == 'XMLHttpRequest':
             return JsonResponse({'success': True, 'comment_id': comment_id})
         else:
-            messages.add_message(request, messages.SUCCESS, 'Your Comment Has Been Deleted')
+            messages.add_message(
+                request,
+                messages.SUCCESS,
+                'Your Comment Has Been Deleted'
+            )
     else:
         if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-            return JsonResponse({'success': False, 'error': 'Comments Can Only Be Deleted By Their Creator'}, status=403)
+            return JsonResponse(
+                {
+                    'success': False,
+                    'error': 'Comments Can Only Be Deleted By Their Creator'
+                },
+                status=403
+            )
         else:
-            messages.add_message(request, messages.ERROR, 'Comments Can Only Be Deleted By Their Creator')
+            messages.add_message(
+                request,
+                messages.ERROR,
+                'Comments Can Only Be Deleted By Their Creator'
+            )
 
     return HttpResponseRedirect(reverse('post_full', args=[slug]))

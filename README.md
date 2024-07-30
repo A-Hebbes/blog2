@@ -138,7 +138,7 @@ As a site user:
 
 
 # Wireframes
-![Wireframe Home](/readme/assets/book-blog-wireframe-hoome.png)
+![Wireframe Home](/readme/assets/book-blog-wireframe-home.png)
 ![Wireframe Full Post Page](/readme/assets/book-blog-wireframe-full-post.png)
 ![Wireframe Upcoming Post](/readme/assets/book-blog-wireframe-upcoming-post.png)
 
@@ -195,58 +195,103 @@ The design used muted green shades, this aimed to provide a calm environment suc
   - Users could have profiles and the ability to connect with other users. This will allow for users to contact each other about books that have been reviewed and others which also may be of interest.
 
 # Data Model
-Describe data model and addd diagram 
+
+This project used a relational database model. The main models are: User, Post, and, Comment. Here's an overview of the data model:
+
+![ERD Place Holder](/readme/assets/book-blog-ERD.png)
+
+## User Model
+The User model is from Django's built-in authentication system. It is used to store user information and is a foreign key in other models.
+
+## Post Model
+The Post model represents blog posts and contains:
+- Title (CharField)
+- Slug (SlugField)
+- Author (ForeignKey to User)
+- Content (TextField)
+- Created On (DateTimeField)
+- Status (IntegerField)
+
+## Comment Model
+The Comment model is used to represent user comments on posts:
+- Post (ForeignKey to Post)
+- Author (ForeignKey to User)
+- Body (TextField)
+- Approved (BooleanField)
+- Created (DateTimeField)
+
+## Relationships
+- A User can create multiple Posts (One-to-Many)
+- A Post can have multiple Comments (One-to-Many)
+- A User can write multiple Comments (One-to-Many)
+
 
 # Testing
 
 ## Manual Testing
 
-### Browser Compatibility
-Test on different browsers 
+As well as automated tests, manual testing was carried out. The following areas were manually tested:
 
-### Responsiveness
-Describe how done, what screen sizes etc.
+### User Interface and Responsiveness
+- Tested the website on different screen sizes to ensure responsive design.
+- Verified that Bootstrap components render and work as expected.
+- Checked for layout issues or overlapping elements.
 
 ### Navigation
-Check each link works as intended
-
-### CRUD Functionality
-Manual test of Create, Read, Update, and Delete operations 
-- Blog posts (as admin)
-- Comments (as user)
-
-### User Authentication
-Test -->
-- User registration
-- User login
-- User logout
-
+- Tested the navigation links to ensure they go to the correct pages.
+- Ensured that the active page is correctly highlighted in the navigation menu.
+- Tested dropdown menu on smaller screens.
 
 ### Forms
-Test forms
-- Comment submission
+- Tested forms to ensure expected results.
+- Checked form validation works correctly.
+- Verified that success and error messages are displayed when needed.
 
+### CRUD Functionality
+- Tested creating new posts / comments.
+- Verified that posts and comments can be read.
+- Tested editing comments to update them.
+- Confirmed that comments can be deleted successfully.
 
-### Content Display
+### User Authentication
+- Tested user registration process to ensure it works as expected.
+- Checked that comment function is only available to logged-in users.
 
-- Blog posts display correctly with all elements (title, content, author, date)
-- Images load properly
-- Upcoming posts list is accurate
+### Cross-browser Testing
+- Checked that the website works as expected on different browsers.
+- The website was tested on Safari, Chrome, and Explorer.
 
-### User Interactions
-- Leaving comments
-- Edit / Delete comments 
-
-
-### Error Handling
-What happens if form isnt filled correctly or url is incorrect
-
-### Performance
-I observed the loading times and overall performance on different devices and connection speeds.
+No major issues were found during manual testing. Minor adjustments were made based on observations during testing.
 
 
 ## Automated Testing
-Describe automated tests
+
+Automated tests were used to ensure reliability and functionality of key parts of the project. Two test files were created:
+
+### 1. Blog Views Tests (`test_views.py`)
+
+This file holds tests for the blog views:
+
+- `setUp`: Creates a test superuser and a test blog post.
+- `test_post_full_with_comment_form`: 
+  - Checks if blog post_full view loads as expected.
+  - It verifies that post content is displayed.
+  - It also ensures that a comment form is on the page.
+- `test_successful_comment_submission`:
+  - Tests the comment submission users who are logged-in.
+  - Checks for a success message after comment submission.
+
+### 2. Comment Form Tests (`test_forms.py`)
+
+This file focuses on testing the comment form validation:
+
+- `test_valid_comment_submission`: Makes sure that comments are accepted if they are valid.
+- `test_empty_comment_rejection`: Tests to check that empty comments do not get published and that error message shows. 
+
+### Running the Tests
+
+The following command was used to run the tests in the terminal: python manage.py test
+
 
 ## Code Validation
 Add results here
