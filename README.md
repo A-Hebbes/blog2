@@ -1,6 +1,8 @@
 # Book Blog
 
-add a brief description of Book Blog 
+![Book Blog Image](/readme/assets/book-blog-responsive.png)
+
+[Book Blog] (https://blog2-8708e1fd0f42.herokuapp.com/) is a site to share book reviews. The site allows users to read about books and to engage in the conversation. 
 
 ## Table of contents
 
@@ -16,11 +18,81 @@ add a brief description of Book Blog
 * [Credits](#credits)
 
 # Purpose
-Explain purpose
+The purpse of Book Blog is to share my passion for literature and reading. The site aims to provide honest, insightful reviews of books so that others can make more informed choices of the books they wish to read. It is also an opportunity to build a community around reading, with users being able to comment on reviews. 
 
 # UX Design
 ## User Stories
-Add user stories
+
+As a user:
+1. I can view an organised list of previous posts so that I can select and view relevant posts.
+
+   Acceptance Criteria:
+   - With multiple posts in the database, the posts will be listed.
+   - A list of previous posts is easily visible when the main page is opened.
+   - Pagination allows the user to select what they wish to read.
+
+As an admin:
+2. I am able to draft posts and then finish them later.
+
+   Acceptance Criteria:
+   - Logged in users are able to save draft blog posts.
+   - Saved posts can be finished at a later time.
+
+As a site user or admin:
+3. I can review comments associated with individual posts to engage in the conversation.
+
+   Acceptance Criteria:
+   - Admins can access and review user comments.
+   - Site users can navigate to the comment thread to participate in the discussion.
+
+As a site user:
+4. I can contribute to the conversation by leaving comments on posts.
+
+   Acceptance Criteria:
+   - User comments are approved or disapproved.
+   - Once approved, a comment can be replied to.
+   - In the case of more than one reply, there will be a conversation function.
+
+
+As a site user:
+5. I can delete or modify my comments on posts.
+
+   Acceptance Criteria:
+   - Logged in users can edit their comments.
+   - Logged in users can delete their comments.
+
+As a site user:
+6. I can register an account to enable commenting on posts.
+
+   Acceptance Criteria:
+   - Users can register an account using their email.
+   - Users are able to log in.
+   - Logged in users are able to leave comments.
+
+As a site admin:
+7. I can perform CRUD operations on posts to effectively manage blog content.
+
+   Acceptance Criteria:
+   - Site admin can create a new blog post.
+   - Site admin can view blog posts.
+   - Site admin can update existing blog posts.
+   - Site admin can delete blog posts.
+
+
+As a Site User:
+8. I can access the full text of a post by clicking on its title.
+
+   Acceptance Criteria:
+   - Upon clicking on a blog post title, the user is presented with a detailed view of the post.
+
+As a site user:
+9. I can see what reviews are to be released so that I can know if anything of interest is coming to the site soon.
+
+   Acceptance Criteria:
+   - Users can view basic details of blog posts which are currently set as drafts.
+
+  
+
 
 ## Structure
 How the site is structured, what pages there are etc.
