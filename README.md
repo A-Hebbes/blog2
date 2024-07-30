@@ -95,7 +95,39 @@ As a site user:
 
 
 ## Structure
-How the site is structured, what pages there are etc.
+
+### Home Page
+![](image_placeholder)
+- The home page displays the site's name and provides a paginated list of blog posts displaying the blog title and creation information. 
+    #### User Goal:
+    >   - To quickly see a range of posts that can be navigated to easily. 
+    >   - To see a navigation menu which can direct to other areas of the site. 
+    >   - To be able to click on relevant areas and be accurately taken to where I intend.
+    
+    #### Website Goal:
+    >   - To give users a clear communication of the site's layout. 
+    >   - To provide the user key information to use the site effectively. 
+
+### Full Post Page
+![](image_placeholder)
+- This is the page in which readers can view a post and, if logged in, can comment on the post. 
+    #### User Goal:
+    >   - To read a blog post about a book I may be interested in. 
+    >   - If I am logged in, to comment on the posts and provide my input to the conversation. 
+    #### Website Goal:
+    >   - To clearly display the blog article.
+    >   - To give the user the opportunity to comment on posts if they are logged in. 
+
+### Upcoming Post Page
+![](image_placeholder)
+- This page allows to see a list of upcoming posts. 
+    #### User Goal:
+    >   - To see what future posts are planned so that I can be aware of anything of interest that is upcoming. 
+   
+    #### Website Goal:
+    >   - To display only the basic information of draft posts so that users can be informed of what is comming up. 
+
+
 
 # Wireframes
 Add wireframes
