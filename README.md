@@ -198,7 +198,7 @@ The design used muted green shades, this aimed to provide a calm environment suc
 
 This project used a relational database model. The main models are: User, Post, and, Comment. Here's an overview of the data model:
 
-![ERD Place Holder](/readme/assets/book-blog-ERD.png)
+![ERDs](/readme/assets/book-blog-ERD.png)
 
 ## User Model
 The User model is from Django's built-in authentication system. It is used to store user information and is a foreign key in other models.
@@ -294,7 +294,12 @@ The following command was used to run the tests in the terminal: python manage.p
 
 
 ## Code Validation
-Add results here
+
+   - Flake8 was used to check python code of the project. 
+   - [JSHint] (https://jshint.com/) was used to check the JavaScript File. There were no issues raised that required changing.
+   - [W3C Validation](https://validator.w3.org/) was used to validate the HTML. Minor issues like unclosed divs and extra spaces in 
+      closing tags were fixed. Remaining warnings were related to the use of Django template tags.
+   - [W3C CSS Jigsaw](https://jigsaw.w3.org/css-validator/) was used to validate the CSS. No errors were found in the CSS code.
 
 # Technologies
 ## Languages

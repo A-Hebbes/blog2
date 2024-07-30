@@ -32,7 +32,7 @@
 <div class="row">
     <div class="col-12 ps-4">
         <strong class="header-text">
-            <i class="far fa-comments"><strong>Comments</strong></i></i> {{ total_comments }}
+            <i class="far fa-comments"><strong>Comments</strong></i> {{ total_comments }}
         </strong>
     </div>
     <div class="col-12">
@@ -81,18 +81,20 @@
 <div class="row justify-content-center">
     <div class="col-12 col-md-8 col-lg-6">
         <div class="card mb-4 mt-3">
-    <div class="card-body">
-        {% if user.is_authenticated %}
-            <h3>Let Us Know What You Think:</h3>
-            <p>Username: {{ user.username }}</p>
-            <form id="commentForm" method="post" style="margin-top: 1.25em;">
-                {{ comment_form | crispy }}
-                {% csrf_token %}
-                <button id="buttonSubmit" type="submit" class="btn btn-signup post-button">Submit</button>
-            </form>
-        {% else %}
-            <p>If You Would Like To Leave a Comment Please Log In</p>
-        {% endif %}
+            <div class="card-body">
+                {% if user.is_authenticated %}
+                    <h3>Let Us Know What You Think:</h3>
+                    <p>Username: {{ user.username }}</p>
+                    <form id="commentForm" method="post" style="margin-top: 1.25em;">
+                        {{ comment_form | crispy }}
+                        {% csrf_token %}
+                        <button id="buttonSubmit" type="submit" class="btn btn-signup post-button">Submit</button>
+                    </form>
+                {% else %}
+                    <p>If You Would Like To Leave a Comment Please Log In</p>
+                {% endif %}
+            </div>
+        </div>
     </div>
 </div>
 
