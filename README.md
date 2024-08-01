@@ -1,6 +1,6 @@
 # Book Blog
 
-![Book Blog Image](/readme/assets/book-blog-responsive.png)
+![Book Blog Image](readme/assets/book-blog-responsive.png)
 
 [Book Blog] (https://blog2-8708e1fd0f42.herokuapp.com/) is a site to share book reviews. The site allows users to read about books and to engage in the conversation. 
 
