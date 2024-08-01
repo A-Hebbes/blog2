@@ -30,8 +30,8 @@ Key aspects of the agile methodology used:
 - Kanban Board: This was used to visualise the project workflow and track progress. 
 - Continuous commits: I regularly commited the code to GitHub to keep a track of progress and ensure up to date code.
 
-![Kanban 1](/readme/assets/book-blog-kanban-1.png)
-![Kanban 2](/readme/assets/book-blog-kanban-2.png)
+![Kanban 1](/readme/assets/images/book-blog-kanban-1.png)
+![Kanban 2](/readme/assets/images/book-blog-kanban-2.png)
 
 # UX Design
 ## User Stories
@@ -107,7 +107,7 @@ As a site user:
 ## Structure
 
 ### Home Page
-![Home Page](/readme/assets/book-blog-home.png)
+![Home Page](/readme/assets/images/book-blog-home.png)
 - The home page displays the site's name and provides a paginated list of blog posts displaying the blog title and creation information. 
     #### User Goal:
     >   - To quickly see a range of posts that can be navigated to easily. 
@@ -119,7 +119,7 @@ As a site user:
     >   - To provide the user key information to use the site effectively. 
 
 ### Full Post Page
-![Full Post](/readme/assets/book-blog-full-post.png)
+![Full Post](/readme/assets/images/book-blog-full-post.png)
 - This is the page in which readers can view a post and, if logged in, can comment on the post. 
     #### User Goal:
     >   - To read a blog post about a book I may be interested in. 
@@ -129,7 +129,7 @@ As a site user:
     >   - To give the user the opportunity to comment on posts if they are logged in. 
 
 ### Upcoming Post Page
-![Upcoming Posts](/readme/assets/book-blog-upcoming-post.png)
+![Upcoming Posts](/readme/assets/images/book-blog-upcoming-post.png)
 - This page allows to see a list of upcoming posts. 
     #### User Goal:
     >   - To see what future posts are planned so that I can be aware of anything of interest that is upcoming. 
@@ -138,7 +138,7 @@ As a site user:
     >   - To display only the basic information of draft posts so that users can be informed of what is comming up. 
 
 ### Sign-in / Sign-up Pages
-![Sign In](/readme/assets/book-blog-sign-in.png)
+![Sign In](/readme/assets/images/book-blog-sign-in.png)
 - This page provides the ability for site administration.
     #### User Goal:
     >   - To manage users, posts, and comments.
@@ -149,7 +149,7 @@ As a site user:
     >   - To give admins control over the blog.
 
 ### 7. Admin Page
-![Admin Page](/readme/assets/book-blog-admin.png)
+![Admin Page](/readme/assets/images/book-blog-admin.png)
 - Gives easy to use site administration
 - Allows for management of users, posts, and comments
 - Enables easy content moderation and site configuration
@@ -157,16 +157,16 @@ As a site user:
 
 
 # Wireframes
-![Wireframe Home](/readme/assets/book-blog-wireframe-home.png)
-![Wireframe Full Post Page](/readme/assets/book-blog-wireframe-full-post.png)
-![Wireframe Upcoming Post](/readme/assets/book-blog-wireframe-upcoming-post.png)
+![Wireframe Home](/readme/assets/images/book-blog-wireframe-home.png)
+![Wireframe Full Post Page](/readme/assets/images/book-blog-wireframe-full-post.png)
+![Wireframe Upcoming Post](/readme/assets/images/book-blog-wireframe-upcoming-post.png)
 
 
 # Design
 The design used muted green shades, this aimed to provide a calm environment such as one that would be conducive for reading.
 [Coolors] (https://coolors.co/) was used to find a good colour palette. 
 
-![Colour Palette](/readme/assets/book-blog-colour-palette.png)
+![Colour Palette](/readme/assets/images/book-blog-colour-palette.png)
 
 
 # Features
@@ -217,7 +217,7 @@ The design used muted green shades, this aimed to provide a calm environment suc
 
 This project used a relational database model. The main models are: User, Post, and, Comment. Below is an overview of the data model.
 
-![ERDs](/readme/assets/book-blog-ERD.png)
+![ERDs](/readme/assets/images/book-blog-ERD.png)
 
 ## User Model
 The User model is from Django's built-in authentication system. It is used to store user information and is a foreign key in other models.
@@ -324,8 +324,8 @@ The following command was used to run the tests in the terminal: python manage.p
 
 There were considerable issues flagged by Lighthouse when the test was run locally. It was not clear to me why these issues were being flagged and the reports I could find seemed to find issues with files that I had not created e.g. bootstrap.css. After attempting to find fixes for the issues and not making progress. I contacted Code Institute tutors for advice. When Lighthouse was run by the tutor, it returned with a far more favourable review of the site. I am still unclear as to why the test was failing locally, other than that it is perhaps that the internet connection where I am presently is unstable. Below are images of the test which I ran locally (white backgorund) and the tutor's screen shot (black background). I hope that this will suffice in this area of the project write up. 
 
-![Local Lighthouse](/readme/assets/book-blog-lighthouse-own.png)
-![Tutor's Lighthouse](/readme/assets/book-blog-tutor-lighthouse.png)
+![Local Lighthouse](/readme/assets/images/book-blog-lighthouse-own.png)
+![Tutor's Lighthouse](/readme/assets/images/book-blog-tutor-lighthouse.png)
 
 # Technologies
 ## Languages
