@@ -20,6 +20,19 @@
 # Purpose
 The purpse of Book Blog is to share my passion for literature and reading. The site aims to provide honest, insightful reviews of books so that others can make more informed choices of the books they wish to read. It is also an opportunity to build a community around reading, with users being able to comment on reviews. 
 
+# Agile Development
+
+This project was completed using agile methodologies and a process of iterative development. I used a Kanban board to manage and track user stories and tasks. This allowed flexibility and continuous improvement throughout the project.
+
+Key aspects of the agile methodology used:
+
+- User Stories: These stories were established at the outset of teh project to guide the development process. 
+- Kanban Board: This was used to visualise the project workflow and track progress. 
+- Continuous commits: I regularly commited the code to GitHub to keep a track of progress and ensure up to date code.
+
+![Kanban 1](/readme/assets/book-blog-kanban-1.png)
+![Kanban 2](/readme/assets/book-blog-kanban-2.png)
+
 # UX Design
 ## User Stories
 
@@ -78,7 +91,6 @@ As a site admin:
    - Site admin can update existing blog posts.
    - Site admin can delete blog posts.
 
-
 As a Site User:
 8. I can access the full text of a post by clicking on its title.
 
@@ -90,8 +102,6 @@ As a site user:
 
    Acceptance Criteria:
    - Users can view basic details of blog posts which are currently set as drafts.
-
-  
 
 
 ## Structure
@@ -129,12 +139,21 @@ As a site user:
 
 ### Sign-in / Sign-up Pages
 ![Sign In](/readme/assets/book-blog-sign-in.png)
-- These pages allow the user to sign in and sign up.  
+- This page provides the ability for site administration.
     #### User Goal:
-    >   - To be able to gain additional priviliges on the site and be able to engage in the community.  
+    >   - To manage users, posts, and comments.
+    >   - To moderate content and control site settings.
    
     #### Website Goal:
-    >   - To increase opportunity for user engagement whilst also maintaining control of the site's use.  
+    >   - To ensure site access for users and quality content.
+    >   - To give admins control over the blog.
+
+### 7. Admin Page
+![Admin Page](/readme/assets/book-blog-admin.png)
+- Gives easy to use site administration
+- Allows for management of users, posts, and comments
+- Enables easy content moderation and site configuration
+- Offers detailed views and filtering options for all models 
 
 
 # Wireframes
@@ -196,7 +215,7 @@ The design used muted green shades, this aimed to provide a calm environment suc
 
 # Data Model
 
-This project used a relational database model. The main models are: User, Post, and, Comment. Here's an overview of the data model:
+This project used a relational database model. The main models are: User, Post, and, Comment. Below is an overview of the data model.
 
 ![ERDs](/readme/assets/book-blog-ERD.png)
 
@@ -301,9 +320,21 @@ The following command was used to run the tests in the terminal: python manage.p
       closing tags were fixed. Remaining warnings were related to the use of Django template tags.
    - [W3C CSS Jigsaw](https://jigsaw.w3.org/css-validator/) was used to validate the CSS. No errors were found in the CSS code.
 
+## Lighthouse
+
+There were considerable issues flagged by Lighthouse when the test was run locally. It was not clear to me why these issues were being flagged and the reports I could find seemed to find issues with files that I had not created e.g. bootstrap.css. After attempting to find fixes for the issues and not making progress. I contacted Code Institute tutors for advice. When Lighthouse was run by the tutor, it returned with a far more favourable review of the site. I am still unclear as to why the test was failing locally, other than that it is perhaps that the internet connection where I am presently is unstable. Below are images of the test which I ran locally (white backgorund) and the tutor's screen shot (black background). I hope that this will suffice in this area of the project write up. 
+
+![Local Lighthouse](/readme/assets/book-blog-lighthouse-own.png)
+![Tutor's Lighthouse](/readme/assets/book-blog-tutor-lighthouse.png)
+
 # Technologies
 ## Languages
-List of langs
+- HTML
+- CSS
+- JavaScript
+- Python
+- Django Template Language
+- SQL
 
 ## Frameworks, Libraries & Programs
 - Django: The main Python web framework used for the project
@@ -325,7 +356,63 @@ List of langs
 
 
 # Deployment
-Need to look into what is included here. 
+
+This project was deployed on Heroku using Code Institute's PostgreSQL server. See below for deployment steps:
+
+### Prerequisites
+
+- Python
+- Django
+- Bootstrap
+- Heroku account
+- Code Institute PostgreSQL server access
+
+### Database Setup
+
+The database uses the Code Institute server follow the Code Institute guidelines to setup this server. 
+
+### Deployment Process
+
+1. Log in to your Heroku account.
+2. On Heroku create a new app.
+3. In Heroku app settings add the required environment variables. 
+4. Connect the GitHub repository to the Heroku app.
+6. The project can be deployed manually or automatically from Heroku. 
+
+### Important Notes
+
+- Ensure `DEBUG` is set to `False` before deployment on Heroku.
+- Include the Heroku app in the `ALLOWED_HOSTS` in settings.py.
+
 
 # Credits
-Code institute walkthoriugh, course leader, tutor assistance, chat gpt/Claude, Ollie Grubb. 
+
+## Code Institute Walkthrough
+
+The code institute project walkthrough 'I Think Therefore I Blog' formed the basis for this project. I used it to guide me through the steps of development and to inform my use of Django and Bootstrap in particular. 
+
+## Course Leader
+
+Laura, my cohort facilitator was a great source of ecouragement and guidance on this project. 
+
+## Tutor Assistance
+
+The Code Institute tutors were also very helpful at a couple of points with this project. Their guidance helped to solve a couple of issues I was having. The guidance and time was very much appreciated.
+
+## AI Assistance
+ChatGPT and Claude AI were used to help provide guidance in a number of project areas. In the early stages they were used to develop the blog content, this allowed for the site to be populated with meaningful content whilst also allowing me time to focus on the main job of working on the project. I also used the AI tools mentioned to help provide guidance for debugging when things went wrong. As a novice, I often find that I struggle to know where to begin when a problem occurs. Using the AI tools as a kind of tutor helped to shed light on where issues may have occured.  
+
+## Ollie Grubb
+Ollie Grubb gave effective and informative advice on the use of databases. He helped in particular to outline the function of ERDs and how these are useful in the development process. 
+
+## Other Sources of Guidance
+
+The below were used at various points of the project to help guide the development: 
+
+- [W3Schools](https://www.w3schools.com/)
+- [Stack Overflow](https://stackoverflow.com/)
+
+## Media
+
+The image of a library was found on [Unsplash](https://unsplash.com/) and was taken by photographer, Janko Ferlic.
+
