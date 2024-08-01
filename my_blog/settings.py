@@ -30,7 +30,7 @@ SECRET_KEY = ('django-insecure-xmgx@t=eze*b(gylbqz1m^vj'
               '(ybm3^6m@0djy*1af#r7m+5gcl')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '8000-ahebbes-blog2-ccdrq22ootb.ws-eu114.gitpod.io',
