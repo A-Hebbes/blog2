@@ -2,9 +2,10 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django.http import JsonResponse
+from django.utils.text import slugify
+from django.contrib.auth.decorators import login_required
 from .models import Post, Comment
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
 
 
 class PostList(generic.ListView):
@@ -60,6 +61,112 @@ def draft_posts(request):
     return render(request, 'blog/future_post.html', {'drafts': drafts})
 
 
+@login_required
+def add_post(request):
+    """Add a new blog post"""
+    if not request.user.is_superuser:
+        messages.add_message(
+            request,
+            messages.ERROR,
+            'Only superusers can add posts'
+        )
+        return HttpResponseRedirect(reverse('home'))
+
+    if request.method == "POST":
+        post_form = PostForm(data=request.POST)
+        if post_form.is_valid():
+            post = post_form.save(commit=False)
+            post.author = request.user
+            post.slug = slugify(post.title)
+            post.save()
+            messages.add_message(
+                request,
+                messages.SUCCESS,
+                'Your Post Has Been Created'
+            )
+            return HttpResponseRedirect(reverse('post_full', args=[post.slug]))
+        else:
+            messages.add_message(
+                request,
+                messages.ERROR,
+                'There was an error creating your post. Please try again.'
+            )
+    else:
+        post_form = PostForm()
+
+    return render(
+        request,
+        "blog/add_post.html",
+        {
+            "post_form": post_form,
+        },
+    )
+
+@login_required
+def edit_post(request, slug):
+    """Edit an existing blog post"""
+    if not request.user.is_superuser:
+        messages.add_message(
+            request,
+            messages.ERROR,
+            'Only superusers can edit posts'
+        )
+        return HttpResponseRedirect(reverse('home'))
+
+    post = get_object_or_404(Post, slug=slug)
+    
+    if request.method == "POST":
+        post_form = PostForm(data=request.POST, instance=post)
+        if post_form.is_valid():
+            post = post_form.save(commit=False)
+            post.slug = slugify(post.title)
+            post.save()
+            messages.add_message(
+                request,
+                messages.SUCCESS,
+                'The Post Has Been Updated'
+            )
+            return HttpResponseRedirect(reverse('post_full', args=[post.slug]))
+        else:
+            messages.add_message(
+                request,
+                messages.ERROR,
+                'There Was An Error Updating This Post'
+            )
+    else:
+        post_form = PostForm(instance=post)
+
+    return render(
+        request,
+        "blog/edit_post.html",
+        {
+            "post_form": post_form,
+            "post": post,
+        },
+    )
+
+
+@login_required
+def delete_post(request, slug):
+    """Delete a blog post"""
+    if not request.user.is_superuser:
+        messages.add_message(
+            request,
+            messages.ERROR,
+            'Only superusers can delete posts'
+        )
+        return HttpResponseRedirect(reverse('home'))
+
+    post = get_object_or_404(Post, slug=slug)
+    post.delete()
+    messages.add_message(
+        request,
+        messages.SUCCESS,
+        'The Post Has Been Deleted'
+    )
+    return HttpResponseRedirect(reverse('home'))
+
+@login_required
 def edit_comment(request, slug, comment_id):
     if request.method == "POST":
         queryset = Post.objects.filter(status=1)
@@ -86,34 +193,22 @@ def edit_comment(request, slug, comment_id):
 
         return HttpResponseRedirect(reverse('post_full', args=[slug]))
 
-
+@login_required
 def delete_comment(request, slug, comment_id):
     comment = get_object_or_404(Comment, pk=comment_id)
 
     if comment.author == request.user:
         comment.delete()
-        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-            return JsonResponse({'success': True, 'comment_id': comment_id})
-        else:
-            messages.add_message(
-                request,
-                messages.SUCCESS,
-                'Your Comment Has Been Deleted'
-            )
+        messages.add_message(
+            request,
+            messages.SUCCESS,
+            'Your Comment Has Been Deleted'
+        )
     else:
-        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-            return JsonResponse(
-                {
-                    'success': False,
-                    'error': 'Comments Can Only Be Deleted By Their Creator'
-                },
-                status=403
-            )
-        else:
-            messages.add_message(
-                request,
-                messages.ERROR,
-                'Comments Can Only Be Deleted By Their Creator'
-            )
+        messages.add_message(
+            request,
+            messages.ERROR,
+            'Comments Can Only Be Deleted By Their Creator'
+        )
 
     return HttpResponseRedirect(reverse('post_full', args=[slug]))
