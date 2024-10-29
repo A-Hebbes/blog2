@@ -17,7 +17,7 @@
             <div class="col-12 col-md-6">
                 <hr>
                 <h2 class="brand-text mb-4">Post Management</h2>
-                <h5 class="text-muted">Edit Post</h5>
+                <h5 class="text-muted">Add New Post</h5>
                 <hr>
             </div>
         </div>
@@ -27,8 +27,8 @@
                     {% csrf_token %}
                     {{ post_form|crispy }}
                     <div class="text-right">
-                        <a class="btn post-button" href="{% url 'post_full' post.slug %}">Cancel</a>
-                        <button class="btn post-button" type="submit">Update Post</button>
+                        <a class="btn post-button" href="{% url 'home' %}">Cancel</a>
+                        <button class="btn post-button" type="submit">Add Post</button>
                     </div>
                 </form>
             </div>            
