@@ -208,7 +208,7 @@ def delete_comment(request, slug, comment_id):
         messages.add_message(
             request,
             messages.ERROR,
-            'Comments Can Only Be Deleted By Their Creator'
+            'Comments Can Only Be Deleted By Authorised Accounts'
         )
 
     return HttpResponseRedirect(reverse('post_full', args=[slug]))

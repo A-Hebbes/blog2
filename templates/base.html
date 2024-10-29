@@ -50,6 +50,15 @@
                             <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">Login Here</a>
                         </li>
                     {% endif %}
+
+                    <!-- Add this to your navbar's <ul> element in base.html -->
+                        {% if user.is_superuser %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == '/add/' %}active{% endif %}" href="{% url 'add_post' %}">
+                                Add Post
+                            </a>
+                        </li>
+                        {% endif %}
                 </ul>
                 <span class="navbar-text text-on-dark">
                     wanderings and wonderings in literature
