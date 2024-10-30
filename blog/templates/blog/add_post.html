@@ -14,20 +14,20 @@
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-8"> 
                 <hr>
                 <h2 class="brand-text mb-4">Post Management</h2>
-                <h5 class="text-muted">Add New Post</h5>
+                <h5 class="brand-text">Add New Post</h5>
                 <hr>
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-8"> 
                 <form method="POST" class="form mb-2">
                     {% csrf_token %}
                     {{ post_form|crispy }}
-                    <div class="text-right">
-                        <a class="btn post-button" href="{% url 'home' %}">Cancel</a>
+                    <div class="text-right mt-3">  
+                        <a class="btn post-button me-2" href="{% url 'home' %}">Cancel</a>  
                         <button class="btn post-button" type="submit">Add Post</button>
                     </div>
                 </form>
