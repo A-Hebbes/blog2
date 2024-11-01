@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h1>Posts tagged with "{{ tag.name }}"</h1>
+    {% for post in posts %}
+        <article class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title">
+                    <a href="{% url 'post_full' post.slug %}">{{ post.title }}</a>
+                </h2>
+                <p class="card-text">{{ post.excerpt }}</p>
+                <p class="card-text">
+                    <small class="text-muted">
+                        By {{ post.author }} | {{ post.created_on|date:"F d, Y" }}
+                    </small>
+                </p>
+            </div>
+        </article>
+    {% empty %}
+        <p>No posts found with this tag.</p>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -212,3 +212,16 @@ def delete_comment(request, slug, comment_id):
         )
 
     return HttpResponseRedirect(reverse('post_full', args=[slug]))
+
+
+def tag_list(request):
+    tags = Tag.objects.annotate(post_count=models.Count('posts'))
+    return render(request, 'blog/tag_list.html', {'tags': tags})
+
+def tag_detail(request, slug):
+    tag = get_object_or_404(Tag, slug=slug)
+    posts = Post.objects.filter(tags=tag, status=1)
+    return render(request, 'blog/tag_detail.html', {
+        'tag': tag,
+        'posts': posts
+    })
