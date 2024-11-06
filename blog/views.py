@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.utils.text import slugify
 from django.contrib.auth.decorators import login_required
-from .models import Post, Comment
+from .models import Post, Comment, Tag
 from .forms import CommentForm, PostForm
 
 
@@ -102,6 +102,7 @@ def add_post(request):
         },
     )
 
+
 @login_required
 def edit_post(request, slug):
     """Edit an existing blog post"""
@@ -112,25 +113,15 @@ def edit_post(request, slug):
     post = get_object_or_404(Post, slug=slug)
     
     if request.method == "POST":
-        print("POST data received:", request.POST)  # Debug print
-        print("Current tags before update:", list(post.tags.all()))  # Debug print
-        
         post_form = PostForm(data=request.POST, instance=post)
         if post_form.is_valid():
-            print("Form is valid")  # Debug print
-            print("Cleaned tags data:", post_form.cleaned_data.get('tags', ''))  # Debug print
-            
             post = post_form.save()
-            print("Tags after save:", list(post.tags.all()))  # Debug print
-            
             messages.add_message(request, messages.SUCCESS, 'The Post Has Been Updated')
             return HttpResponseRedirect(reverse('post_full', args=[post.slug]))
         else:
-            print("Form errors:", post_form.errors)  # Debug print
             messages.add_message(request, messages.ERROR, 'There Was An Error Updating This Post')
     else:
         post_form = PostForm(instance=post)
-        print("Initial tags:", [tag.name for tag in post.tags.all()])  # Debug print
 
     return render(
         request,
@@ -162,6 +153,7 @@ def delete_post(request, slug):
     )
     return HttpResponseRedirect(reverse('home'))
 
+
 @login_required
 def edit_comment(request, slug, comment_id):
     if request.method == "POST":
@@ -189,6 +181,7 @@ def edit_comment(request, slug, comment_id):
 
         return HttpResponseRedirect(reverse('post_full', args=[slug]))
 
+
 @login_required
 def delete_comment(request, slug, comment_id):
     comment = get_object_or_404(Comment, pk=comment_id)
@@ -213,6 +206,7 @@ def delete_comment(request, slug, comment_id):
 def tag_list(request):
     tags = Tag.objects.annotate(post_count=models.Count('posts'))
     return render(request, 'blog/tag_list.html', {'tags': tags})
+
 
 def tag_detail(request, slug):
     tag = get_object_or_404(Tag, slug=slug)

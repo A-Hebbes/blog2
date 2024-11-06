@@ -226,13 +226,6 @@ body {
 }
 
 /* Tag Styles */
-.tag-cloud {
-    padding: 1.25rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.625rem;
-    background-color: var(--color2);  
-}
 
 .tag {
     display: inline-block;
@@ -276,6 +269,11 @@ body {
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-top: 0.625rem;
+}
+
+.post-link:hover {
+    color: var(--color5);
+    text-decoration: underline !important;
 }
 
 /* Footer Styles */
