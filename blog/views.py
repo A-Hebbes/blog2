@@ -106,35 +106,31 @@ def add_post(request):
 def edit_post(request, slug):
     """Edit an existing blog post"""
     if not request.user.is_superuser:
-        messages.add_message(
-            request,
-            messages.ERROR,
-            'Only superusers can edit posts'
-        )
+        messages.add_message(request, messages.ERROR, 'Only superusers can edit posts')
         return HttpResponseRedirect(reverse('home'))
 
     post = get_object_or_404(Post, slug=slug)
     
     if request.method == "POST":
+        print("POST data received:", request.POST)  # Debug print
+        print("Current tags before update:", list(post.tags.all()))  # Debug print
+        
         post_form = PostForm(data=request.POST, instance=post)
         if post_form.is_valid():
-            post = post_form.save(commit=False)
-            post.slug = slugify(post.title)
-            post.save()
-            messages.add_message(
-                request,
-                messages.SUCCESS,
-                'The Post Has Been Updated'
-            )
+            print("Form is valid")  # Debug print
+            print("Cleaned tags data:", post_form.cleaned_data.get('tags', ''))  # Debug print
+            
+            post = post_form.save()
+            print("Tags after save:", list(post.tags.all()))  # Debug print
+            
+            messages.add_message(request, messages.SUCCESS, 'The Post Has Been Updated')
             return HttpResponseRedirect(reverse('post_full', args=[post.slug]))
         else:
-            messages.add_message(
-                request,
-                messages.ERROR,
-                'There Was An Error Updating This Post'
-            )
+            print("Form errors:", post_form.errors)  # Debug print
+            messages.add_message(request, messages.ERROR, 'There Was An Error Updating This Post')
     else:
         post_form = PostForm(instance=post)
+        print("Initial tags:", [tag.name for tag in post.tags.all()])  # Debug print
 
     return render(
         request,

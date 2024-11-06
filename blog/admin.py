@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Comment
+from .models import Post, Comment, Tag
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -10,6 +10,8 @@ class CustomPostAdmin(SummernoteModelAdmin):
     list_filter = ('status',)
     prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('content',)
+    filter_horizontal = ('tags',)  
 
 
 admin.site.register(Comment)
+admin.site.register(Tag)

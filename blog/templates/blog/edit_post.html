@@ -25,7 +25,24 @@
             <div class="col-12 col-md-6">
                 <form method="POST" class="form mb-2">
                     {% csrf_token %}
-                    {{ post_form|crispy }}
+                    {{ post_form.media }}
+                    <div class="form-group">
+                        {{ post_form.title|as_crispy_field }}
+                    </div>
+                    <div class="form-group">
+                        {{ post_form.content|as_crispy_field }}
+                    </div>
+                    <div class="form-group">
+                        {{ post_form.excerpt|as_crispy_field }}
+                    </div>
+                    <div class="form-group">
+                        {{ post_form.status|as_crispy_field }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ post_form.tags.id_for_label }}">Tags</label>
+                        {{ post_form.tags }}
+                        <small class="form-text text-muted">{{ post_form.tags.help_text }}</small>
+                    </div>
                     <div class="text-right">
                         <a class="btn post-button" href="{% url 'post_full' post.slug %}">Cancel</a>
                         <button class="btn post-button" type="submit">Update Post</button>
