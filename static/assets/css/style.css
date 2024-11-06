@@ -16,7 +16,6 @@ body {
 .box-background {
     background-color: var(--color5);
     color: var(--color1);
-
 }
 
 /* Navigation Styles */
@@ -46,7 +45,6 @@ body {
     flex-direction: column;
     margin: 0;
     padding: 0;
-    
 }
 
 .card-title { 
@@ -227,33 +225,31 @@ body {
     content: none;
 }
 
-
 /* Tag Styles */
-
 .tag-cloud {
-    padding: 20px;
+    padding: 1.25rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 0.625rem;
     background-color: var(--color2);  
 }
 
 .tag {
     display: inline-block;
-    padding: 5px 15px;
+    padding: 0.3125rem 0.9375rem;
     background-color: var(--color5);
-    border-radius: 15px;
+    border-radius: 0.9375rem;
     text-decoration: none;
     color: var(--color1);
     transition: all 0.3s ease;
-    border: 1px solid var(--color4);
+    border: 0.0625rem solid var(--color4);
 }
 
 .tag:hover {
     background-color: var(--color4);
     color: var(--color1);
     text-decoration: none;
-    transform: translateY(-2px);
+    transform: translateY(-0.125rem);
 }
 
 .tag-md {
@@ -269,22 +265,28 @@ body {
 }
 
 .post-tags {
-    margin: 15px 0;
-    padding: 10px 0;
-    border-top: 1px solid var(--color4);
-    border-bottom: 1px solid var(--color4);
+    margin: 1rem 0;
+    padding: 0.625rem 0;
+    border-top: 0.0625rem solid var(--color4);
+    border-bottom: 0.0625rem solid var(--color4);
+}
+
+.tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.625rem;
 }
 
 /* Footer Styles */
 footer.footer {
     background-color: var(--color1);
-    
-    padding: 20px 0;
+    padding: 1.25rem 0;
 }
 
 footer.footer .social-links a {
     color: black;
-    margin: 0 10px;
+    margin: 0 0.625rem;
     text-decoration: none;
 }
 
@@ -292,22 +294,8 @@ footer.footer .social-links a:hover {
     color: white;
 }
 
-/*tag Styles*/
-
-.post-tags {
-    border-top: 1px solid var(--color4);
-    padding-top: 15px;
-}
-
-.tag-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 10px;
-}
-
 /* Media Queries */
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
     .header {
         padding: 1rem 0;
     }
@@ -318,5 +306,14 @@ footer.footer .social-links a:hover {
 
     .post-info {
         font-size: 0.9rem;
+    }
+
+    .tag {
+        padding: 0.25rem 0.75rem;
+        font-size: 0.85rem;
+    }
+    
+    .tag-container {
+        gap: 0.375rem;
     }
 }
