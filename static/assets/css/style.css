@@ -107,6 +107,11 @@ body {
     max-height: 300px;
 }
 
+.header-compact {
+    min-height: 100px;
+    padding: 1rem 0;
+}
+
 /* Post Styles */
 .post-button {
     text-decoration: none;
