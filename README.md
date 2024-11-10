@@ -249,39 +249,88 @@ The Comment model is used to represent user comments on posts:
 
 ## Manual Testing
 
-As well as automated tests, manual testing was carried out. The following areas were manually tested:
+### User Interface Elements
 
-### User Interface and Responsiveness
-- Tested the website on different screen sizes to ensure responsive design.
-- Verified that Bootstrap components render and work as expected.
-- Checked for layout issues or overlapping elements.
+#### Navigation Bar
+1. Home Link
+- Expected: Clicking "Home" navigates to homepage
+- Testing: Clicked home link from various pages
+- Result: Successfully redirected to homepage
+- Fix: No fixes needed
 
-### Navigation
-- Tested the navigation links to ensure they go to the correct pages.
-- Ensured that the active page is correctly highlighted in the navigation menu.
-- Tested dropdown menu on smaller screens.
+2. Responsive Menu (Mobile)
+- Expected: Menu collapses into hamburger on mobile screens
+- Testing: Tested on various screen sizes under 768px
+- Result: Menu correctly collapses and expands
+- Fix: No fixes needed
 
-### Forms
-- Tested forms to ensure expected results.
-- Checked form validation works correctly.
-- Verified that success and error messages are displayed when needed.
+#### Authentication Features
 
-### CRUD Functionality
-- Tested creating new posts / comments.
-- Verified that posts and comments can be read.
-- Tested editing comments to update them.
-- Confirmed that comments can be deleted successfully.
+1. Login Form
+- Expected: Users can login with valid credentials
+- Testing: Tested with:
+ - Valid username/password
+ - Invalid username
+ - Invalid password
+ - Empty fields
+- Result: 
+ - Valid credentials: Successfully logged in
+ - Invalid/empty fields: Appropriate error messages shown
+- Fix: No fixes needed
 
-### User Authentication
-- Tested user registration process to ensure it works as expected.
-- Checked that comment function is only available to logged-in users.
+2. Registration Form
+- Expected: New users can create accounts with valid details
+- Testing: Tested with:
+ - Valid information
+ - Existing username
+ - Non-matching passwords
+ - Invalid email format
+- Result: Form validation works correctly
+- Fix: No fixes needed
 
-### Cross-browser Testing
-- Checked that the website works as expected on different browsers.
-- The website was tested on Safari, Chrome, and Explorer.
+#### Blog Features
 
-No major issues were found during manual testing. Minor adjustments were made based on observations during testing.
+1. Comment Submission
+- Expected: Logged-in users can post comments on blog posts
+- Testing: Tested:
+ - Submitting valid comment
+ - Submitting empty comment
+ - Submitting as logged-out user
+- Result: 
+ - Valid comments posted successfully
+ - Empty comments rejected with error message
+ - Logged-out users redirected to login
+- Fix: No fixes needed
 
+2. Edit Comment Button
+- Expected: Users can edit their own comments only
+- Testing: Tested editing:
+ - Own comment
+ - Another user's comment
+ - As admin user
+- Result: Edit button only appears for own comments and admin
+- Fix: No fixes needed
+
+### Responsiveness Testing
+
+Tested on following devices/screen sizes:
+1. Desktop (1920x1080)
+- Expected: Full layout with sidebar visible
+- Testing: Checked all pages and features
+- Result: Layout renders correctly
+- Fix: No fixes needed
+
+2. Tablet (768px)
+- Expected: Responsive layout with collapsed menu
+- Testing: Tested navigation and content flow
+- Result: Some content overflow on blog posts
+- Fix: Added media query to adjust padding on blog containers
+
+3. Mobile (320px)
+- Expected: Single column layout, stacked elements
+- Testing: Checked all interactive elements
+- Result: All elements accessible and functional
+- Fix: No fixes needed
 
 ## Automated Testing
 
@@ -300,12 +349,17 @@ This file holds tests for the blog views:
   - Tests the comment submission users who are logged-in.
   - Checks for a success message after comment submission.
 
+[Views Unit Tests Screenshot](readme/assets/images/views_unit-test.png)
+  
+
 ### 2. Comment Form Tests (`test_forms.py`)
 
 This file focuses on testing the comment form validation:
 
 - `test_valid_comment_submission`: Makes sure that comments are accepted if they are valid.
 - `test_empty_comment_rejection`: Tests to check that empty comments do not get published and that error message shows. 
+
+![Unit Tests Screenshot](readme/assets/images/unit-tests.png)
 
 ### Running the Tests
 
