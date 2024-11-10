@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
-    
 </head>
 
 <body class="d-flex flex-column h-100 main-bg">
@@ -24,44 +23,49 @@
             <a class="navbar-brand" href="{% url 'home' %}">
                 <span class="brand-text">Book Blog</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page" href="{% url 'home' %}">Home</a>
+                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
+                            href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/drafts/' %}active{% endif %}" href="{% url 'draft_posts' %}">Upcoming Posts</a>
+                        <a class="nav-link {% if request.path == '/drafts/' %}active{% endif %}"
+                            href="{% url 'draft_posts' %}">Upcoming Posts</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/subscribe/' %}active{% endif %}" href="{% url 'subscribers:subscribe' %}">Subscribe</a>
+                        <a class="nav-link {% if request.path == '/subscribe/' %}active{% endif %}"
+                            href="{% url 'subscribers:subscribe' %}">Subscribe</a>
                     </li>
                     <li>
-                    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
-                </li>
+                        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                    </li>
                     {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout Here</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
+                            href="{% url 'account_logout' %}">Logout Here</a>
+                    </li>
                     {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page" href="{% url 'account_signup' %}">Sign Up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">Login Here</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
+                            href="{% url 'account_signup' %}">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
+                            href="{% url 'account_login' %}">Login Here</a>
+                    </li>
                     {% endif %}
 
-                    <!-- Add this to your navbar's <ul> element in base.html -->
-                        {% if user.is_superuser %}
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == '/add/' %}active{% endif %}" href="{% url 'add_post' %}">
-                                Add Post
-                            </a>
-                        </li>
-                        {% endif %}
+                    {% if user.is_superuser %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/add/' %}active{% endif %}"
+                            href="{% url 'add_post' %}">Add Post</a>
+                    </li>
+                    {% endif %}
                 </ul>
                 <span class="navbar-text text-on-dark">
                     wanderings and wonderings in literature
@@ -74,10 +78,10 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10">
                 {% for message in messages %}
-                    <div class="alert {{ message.tags }} fade show" role="alert">
-                        {{ message | safe }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">&times;</button>
-                    </div>
+                <div class="alert {{ message.tags }} fade show" role="alert">
+                    {{ message | safe }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">&times;</button>
+                </div>
                 {% endfor %}
             </div>
         </div>
@@ -89,22 +93,23 @@
     </main>
 
     <footer class="footer mt-auto py-3 dark-bg">
-        <p class="m-0 text-center navbar-brand"> <span class="brand-text"> Book Blog</span></p>
-        <p class="m-0 text-center navbar-brand"> <span class="brand-text" >Follow: </span>
+        <p class="m-0 text-center navbar-brand"><span class="brand-text">Book Blog</span></p>
+        <p class="m-0 text-center navbar-brand"><span class="brand-text">Follow: </span>
             <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-facebook-square ms-3 brand-text"></i>
+                <i class="fab fa-facebook-square ms-3 brand-text"></i>
             </a>
             <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-twitter-square ms-3 brand-text"></i>
-        </a>
-        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-instagram-square ms-3 brand-text"></i>  
-        </a>
+                <i class="fab fa-twitter-square ms-3 brand-text"></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-instagram-square ms-3 brand-text"></i>
+            </a>
         </p>
     </footer>
-           
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
+    </script>
     {% block scripts %}
     {% endblock %}
 </body>

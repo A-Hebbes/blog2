@@ -22,16 +22,70 @@ The purpose of Book Blog is to share my passion for literature and reading. The 
 
 # Agile Development
 
-This project was completed using agile methodologies and a process of iterative development. I used a Kanban board to manage and track user stories and tasks. This allowed flexibility and continuous improvement throughout the project.
+### GitHub Projects
 
-Key aspects of the agile methodology used:
+[GitHub Projects](https://github.com/A-Hebbes/blog2/projects) served as an Agile tool for this project. This project was developed using agile methodologies, following an iterative approach with several sprints. The development process was managed using a GitHub Projects Kanban board to track user stories and tasks. 
 
-- User Stories: These stories were established at the outset of the project to guide the development process. 
-- Kanban Board: This was used to visualise the project workflow and track progress. 
-- Continuous commits: I regularly commited the code to GitHub to keep a track of progress and ensure up to date code.
+### GitHub Issues
 
+[GitHub Issues](https://github.com/A-Hebbes/blog2/issues) served as an another Agile tool.
+There, I used my own **User Story Template** to manage user stories.
+
+It also helped with milestone iterations on a weekly basis.
+
+## Epics and User Stories Mapping
+
+The project was organised into epics with their related user stories clearly mapped:
+
+1. **EPIC: User Authentication & Management**
+  * USER STORY #1: Account Registration
+    - As a site user, I can register an account to enable commenting on posts
+    - Acceptance Criteria:
+      * Users can register an account using their email
+      * Users are able to log in
+      * Logged in users are able to leave comments
+
+2. **EPIC: Blog Content Management**
+  * USER STORY #2: Draft Management
+    - As an admin, I am able to draft posts and then finish them later
+  * USER STORY #3: Content CRUD
+    - As a site admin, I can perform CRUD operations on posts
+  * USER STORY #4: Post Access
+    - As a site user, I can access the full text of a post by clicking on its title
+
+3. **EPIC: User Interaction & Comments**
+  * USER STORY #5: Comment Management
+    - As a site user or admin, I can review comments on posts
+  * USER STORY #6: Comment Creation
+    - As a site user, I can contribute by leaving comments
+  * USER STORY #7: Comment Editing
+    - As a site user, I can delete or modify my comments
+
+4. **EPIC: Site Administration**
+  * USER STORY #8: Post Management
+    - As an admin, I can perform CRUD operations on posts
+  * USER STORY #9: Content Preview
+    - As a site user, I can see upcoming reviews
+    
+5. **EPIC: User Interface & Navigation**
+  * USER STORY #10: Site Navigation
+    - As a user, I can easily navigate through different sections
+  * USER STORY #11: Responsive Design
+    - As a user, I can access the site on any device
+
+## Agile Implementation
+
+The project was managed using:
+- GitHub Projects Kanban board for task tracking
+- User stories with defined acceptance criteria
+- Regular commits to track progress
+- Iterative development cycles
+
+Project board screenshots demonstrate the implementation:
 ![Kanban 1](/readme/assets/images/book-blog-kanban-1.png)
 ![Kanban 2](/readme/assets/images/book-blog-kanban-2.png)
+
+Each user story was moved across the board from 'To Do', through 'In Progress', to 'Done' as development progressed, ensuring a clear visualisation of the project's progress.
 
 # UX Design
 ## User Stories
@@ -497,7 +551,12 @@ The database uses the Code Institute server follow the Code Institute guidelines
 
 ## Code Institute Walkthrough
 
-The code institute project walkthrough 'I Think Therefore I Blog' formed the basis for this project. I used it to guide me through the steps of development and to inform my use of Django and Bootstrap in particular. 
+The code institute project walkthrough 'I Think Therefore I Blog' formed the basis for this project. I used it to guide me through the steps of development and to inform my use of Django and Bootstrap in particular.
+
+## Mentor
+
+Tim Nelson became my mentor after the initial submission of this project, but his advice through my work on project 5 greatly helped in understanding the requirements of this project for resubmission. In particular his advice on creating apps and models was invaluable. Also, his guidance on automatically creating ERDs was of considerable benefit. 
+
 
 ## Course Leader
 
