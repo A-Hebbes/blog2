@@ -9,11 +9,14 @@ def contact_view(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'We have received your message. Thank you')
+            messages.success(request, 'We received your message.')
             return redirect(reverse('home'))
         else:
-            messages.error(request, 'Something went wrong. Please check the form and submit again.')
+            messages.error(
+                request,
+                'Something went wrong. Please check the form and submit again.'
+            )
     else:
         form = ContactForm()
-    
+
     return render(request, 'contact/contact.html', {'form': form})

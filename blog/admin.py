@@ -10,7 +10,7 @@ class CustomPostAdmin(SummernoteModelAdmin):
     list_filter = ('status',)
     prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('content',)
-    filter_horizontal = ('tags',)  
+    filter_horizontal = ('tags',)
 
 
 admin.site.register(Comment)

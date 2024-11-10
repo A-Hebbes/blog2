@@ -2,7 +2,7 @@
 
 ![Book Blog Image](readme/assets/images/book-blog-responsive.png)
 
-[Book Blog] (https://blog2-8708e1fd0f42.herokuapp.com/) is a site to share book reviews. The site allows users to read about books and to engage in the conversation. 
+[Book Blog](https://blog2-8708e1fd0f42.herokuapp.com/) is a site to share book reviews. The site allows users to read about books and to engage in the conversation. 
 
 ## Table of contents
 
@@ -18,7 +18,7 @@
 * [Credits](#credits)
 
 # Purpose
-The purpse of Book Blog is to share my passion for literature and reading. The site aims to provide honest, insightful reviews of books so that others can make more informed choices of the books they wish to read. It is also an opportunity to build a community around reading, with users being able to comment on reviews. 
+The purpose of Book Blog is to share my passion for literature and reading. The site aims to provide honest, insightful reviews of books so that others can make more informed choices of the books they wish to read. It is also an opportunity to build a community around reading, with users being able to comment on reviews. 
 
 # Agile Development
 
@@ -26,7 +26,7 @@ This project was completed using agile methodologies and a process of iterative 
 
 Key aspects of the agile methodology used:
 
-- User Stories: These stories were established at the outset of teh project to guide the development process. 
+- User Stories: These stories were established at the outset of the project to guide the development process. 
 - Kanban Board: This was used to visualise the project workflow and track progress. 
 - Continuous commits: I regularly commited the code to GitHub to keep a track of progress and ensure up to date code.
 
@@ -135,7 +135,7 @@ As a site user:
     >   - To see what future posts are planned so that I can be aware of anything of interest that is upcoming. 
    
     #### Website Goal:
-    >   - To display only the basic information of draft posts so that users can be informed of what is comming up. 
+    >   - To display only the basic information of draft posts so that users can be informed of what is coming up. 
 
 ### Sign-in / Sign-up Pages
 ![Sign In](/readme/assets/images/book-blog-sign-in.png)
@@ -164,7 +164,7 @@ As a site user:
 
 # Design
 The design used muted green shades, this aimed to provide a calm environment such as one that would be conducive for reading.
-[Coolors] (https://coolors.co/) was used to find a good colour palette. 
+[Coolors](https://coolors.co/) was used to find a good colour palette. 
 
 ![Colour Palette](/readme/assets/images/book-blog-colour-palette.png)
 
@@ -213,37 +213,90 @@ The design used muted green shades, this aimed to provide a calm environment suc
 - Enhanced user profiles
   - Users could have profiles and the ability to connect with other users. This will allow for users to contact each other about books that have been reviewed and others which also may be of interest.
 
-# Data Model
+## Database Schema
 
-This project used a relational database model. The main models are: User, Post, and, Comment. Below is an overview of the data model.
+The project uses a PostgreSQL database with several interconnected models. Below is the Entity Relationship Diagram (ERD) showing the database structure:
 
-![ERDs](/readme/assets/images/book-blog-ERD.png)
+![ERDs](/readme/assets/images/erd.png)
 
-## User Model
-The User model is from Django's built-in authentication system. It is used to store user information and is a foreign key in other models.
+### Core Models
 
-## Post Model
-The Post model represents blog posts and contains:
-- Title (CharField)
-- Slug (SlugField)
-- Author (ForeignKey to User)
-- Content (TextField)
-- Created On (DateTimeField)
-- Status (IntegerField)
+#### Blog Post
+The `BlogPost` model is the central model for blog content:
+- `title`: Unique title for each blog post
+- `slug`: URL-friendly version of the title
+- `content`: Main body text of the blog post
+- `excerpt`: Short summary of the post
+- `created_on`: Timestamp of post creation
+- `updated_on`: Timestamp of last update
+- `status`: Integer field indicating post status (draft/published)
+- `author`: Foreign key to User model
+- `tags`: Many-to-many relationship with Tag model
 
-## Comment Model
-The Comment model is used to represent user comments on posts:
-- Post (ForeignKey to Post)
-- Author (ForeignKey to User)
-- Body (TextField)
-- Approved (BooleanField)
-- Created (DateTimeField)
+#### Tag
+The `BlogTag` model allows for post categorization:
+- `name`: Unique name for the tag
+- `slug`: URL-friendly version of the tag name
+- `created_on`: Timestamp of tag creation
 
-## Relationships
-- A User can create multiple Posts (One-to-Many)
-- A Post can have multiple Comments (One-to-Many)
-- A User can write multiple Comments (One-to-Many)
+#### Comment
+The `BlogComment` model handles user comments:
+- `body`: The comment text
+- `author`: Foreign key to User model
+- `post`: Foreign key to Post model
+- `created_on`: Timestamp of comment creation
+- `approved`: Boolean field for comment moderation
 
+#### Contact
+The `Contact` model stores contact form submissions:
+- `name`: Name of the person making contact
+- `email`: Email address of the contact
+- `message`: Content of the contact message
+- `created_at`: Timestamp of message submission
+
+#### Subscriber
+The `Subscribers` model manages newsletter subscriptions:
+- `email`: Unique email address of the subscriber
+
+### Relationships
+- A Blog Post can have multiple Tags (Many-to-Many)
+- A Blog Post can have multiple Comments (One-to-Many)
+- Each Comment belongs to one Post and one User
+- Each Blog Post belongs to one User (author)
+- Contact and Subscriber models are standalone with no relationships to other models
+
+### Key Features
+- The schema supports a full-featured blog with tagging capabilities
+- Comment moderation is supported through the `approved` field
+- SEO-friendly URLs are enabled through slug fields
+- Timestamps track content creation and updates
+- Newsletter subscription functionality is independent of user accounts
+- Contact form submissions are stored separately from user data
+
+## ERD Creation 
+
+I have used `pygraphviz` and `django-extensions` to automatically create an ERD.
+
+The steps taken were as follows:
+- In the terminal: `sudo apt update`
+- then: `sudo apt-get install python3-dev graphviz libgraphviz-dev pkg-config`
+- then type `Y` to proceed
+- then: `pip3 install django-extensions pygraphviz`
+- in my `settings.py` file, I added the following to my `INSTALLED_APPS`:
+
+```python
+INSTALLED_APPS = [
+    ...
+    'django_extensions',
+    ...
+]
+```
+- back in the terminal: `python3 manage.py graph_models -a -o erd.png`
+- dragged the new `erd.png` file into my `readme/assets/images` folder
+- removed `'django_extensions',` from my `INSTALLED_APPS`
+- finally, in the terminal: `pip3 uninstall django-extensions pygraphviz -y`
+
+source: [medium.com](https://medium.com/@yathomasi1/1-using-django-extensions-to-visualize-the-database-diagram-in-django-application-c5fa7e710e16)
 
 # Testing
 
@@ -369,7 +422,7 @@ The following command was used to run the tests in the terminal: python manage.p
 ## Code Validation
 
    - Flake8 was used to check python code of the project. 
-   - [JSHint] (https://jshint.com/) was used to check the JavaScript File. There were no issues raised that required changing.
+   - [JSHint](https://jshint.com/) was used to check the JavaScript File. There were no issues raised that required changing.
    - [W3C Validation](https://validator.w3.org/) was used to validate the HTML. Minor issues like unclosed divs and extra spaces in 
       closing tags were fixed. Remaining warnings were related to the use of Django template tags.
    - [W3C CSS Jigsaw](https://jigsaw.w3.org/css-validator/) was used to validate the CSS. No errors were found in the CSS code.
@@ -381,32 +434,33 @@ There were considerable issues flagged by Lighthouse when the test was run local
 ![Local Lighthouse](/readme/assets/images/book-blog-lighthouse-own.png)
 ![Tutor's Lighthouse](/readme/assets/images/book-blog-tutor-lighthouse.png)
 
-# Technologies
-## Languages
-- HTML
-- CSS
-- JavaScript
-- Python
-- Django Template Language
-- SQL
+## Technologies Used
 
-## Frameworks, Libraries & Programs
-- Django: The main Python web framework used for the project
-- Bootstrap: For responsive front-end design
-- Git: For version control
-- GitHub: To store the repository
-- Heroku: For deploying the live site 
-- Gunicorn: To run Django on Heroku
-- PostgreSQL: Database 
-- SQLite: Local development database when main server was down
-- Django Allauth: For user authentication, registration, and account management 
-- Django Crispy Forms: For styling Django forms 
-- Summernote: For text editing in the admin panel 
-- Font Awesome: For icons 
-- Google Fonts: For custom typography 
-- jQuery: 
-- Whitenoise: For serving static files 
-- Balsamiq: For creating wireframes
+### Frontend
+- HTML5
+- CSS3
+- JavaScript (ES6)
+- Bootstrap - For responsive design and components
+- Font Awesome - For icons
+- Google Fonts - For typography
+
+### Backend
+- Python 3.12
+- Django 4.2.13 - Main web framework
+- PostgreSQL - Production database
+- SQLite3 - Development database
+
+### Development & Deployment Tools
+- Git - Version control
+- GitHub - Code repository
+- Heroku - Cloud platform for deployment
+- VSCode - Code editor
+- Django Debug Toolbar - For development debugging
+- Coverage.py - For testing coverage reports
+
+### Authentication & Security
+- Django Allauth - For user authentication
+- Django Crispy Forms - For form rendering
 
 
 # Deployment

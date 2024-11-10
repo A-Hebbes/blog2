@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Subscriber
 
+
 def subscribe(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -13,4 +14,3 @@ def subscribe(request):
                 messages.error(request, 'You are already subscribed!')
         return redirect('home')
     return render(request, 'subscribers/subscribe.html')
-

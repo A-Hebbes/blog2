@@ -107,19 +107,27 @@ def add_post(request):
 def edit_post(request, slug):
     """Edit an existing blog post"""
     if not request.user.is_superuser:
-        messages.add_message(request, messages.ERROR, 'Only superusers can edit posts')
+        messages.add_message(
+            request,
+            messages.ERROR,
+            'Only superusers can edit posts'
+        )
         return HttpResponseRedirect(reverse('home'))
 
     post = get_object_or_404(Post, slug=slug)
-    
+
     if request.method == "POST":
         post_form = PostForm(data=request.POST, instance=post)
         if post_form.is_valid():
             post = post_form.save()
-            messages.add_message(request, messages.SUCCESS, 'The Post Has Been Updated')
+            messages.add_message(request, messages.SUCCESS, 'Post Updated')
             return HttpResponseRedirect(reverse('post_full', args=[post.slug]))
         else:
-            messages.add_message(request, messages.ERROR, 'There Was An Error Updating This Post')
+            messages.add_message(
+                request,
+                messages.ERROR,
+                'Error Updating This Post'
+            )
     else:
         post_form = PostForm(instance=post)
 

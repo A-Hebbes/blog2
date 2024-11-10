@@ -31,14 +31,20 @@ class PostForm(forms.ModelForm):
         if self.instance.pk:
             existing_tags = self.instance.tags.all()
             if existing_tags:
-                self.initial['tags'] = ', '.join(tag.name for tag in existing_tags)
+                self.initial['tags'] = ', '.join(
+                    tag.name for tag in existing_tags
+                )
 
     def clean_tags(self):
         tag_string = self.cleaned_data.get('tags')
         if isinstance(tag_string, list):
             tag_string = ', '.join(tag_string)
         tag_string = str(tag_string or '')
-        return [tag.strip().lower() for tag in tag_string.split(',') if tag.strip()]
+        return [
+            tag.strip().lower()
+            for tag in tag_string.split(',')
+            if tag.strip()
+            ]
 
     def save(self, commit=True):
         post = super().save(commit=False)
